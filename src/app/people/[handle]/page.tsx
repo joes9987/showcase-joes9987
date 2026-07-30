@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ForthStatusPanel } from '@/components/ForthStatusPanel'
+import { memberAvatarUrl } from '@/lib/avatars'
 import { loadForthStatus } from '@/lib/forth-status'
 import { getMember, listPublicMembers } from '@/lib/members'
 import { SITE } from '@/lib/site'
@@ -65,6 +66,7 @@ export default async function PersonPage ({ params }: Props) {
   }
 
   const links = member.links ?? {}
+  const avatar = memberAvatarUrl(member.avatar_url, member.github_handle)
 
   return (
     <div className={ui.pageMain}>
@@ -79,24 +81,18 @@ export default async function PersonPage ({ params }: Props) {
         />
         <div className="px-6 pb-8 sm:px-10">
           <div className="-mt-10 flex flex-wrap items-end gap-4">
-            {member.avatar_url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={member.avatar_url}
-                alt=""
-                className="h-20 w-20 rounded-2xl object-cover ring-4 ring-[var(--card-solid)]"
-              />
-            ) : (
-              <div
-                className="flex h-20 w-20 items-center justify-center rounded-2xl text-xl font-bold ring-4 ring-[var(--card-solid)]"
-                style={{ background: 'var(--nav-active)', color: 'var(--nav-active-fg)' }}
-              >
-                {member.display_name.slice(0, 2).toUpperCase()}
-              </div>
-            )}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatar}
+              alt=""
+              className="h-20 w-20 rounded-2xl object-cover ring-4 ring-[var(--card-solid)]"
+            />
             <div className="min-w-0 pb-1">
               <h1 className="font-display text-3xl font-bold text-[var(--foreground)]">{member.display_name}</h1>
               <p className="font-mono text-sm text-[var(--muted)]">@{member.github_handle}</p>
+              {member.campus && (
+                <p className="mt-1 text-sm text-[var(--muted-foreground)]">{member.campus}</p>
+              )}
             </div>
           </div>
           {member.headline && (
@@ -107,18 +103,26 @@ export default async function PersonPage ({ params }: Props) {
               {member.bio}
             </p>
           )}
+          {(member.skills?.length ?? 0) > 0 && (
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {member.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-medium text-[var(--accent-foreground)]"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {(links.github || `https://github.com/${member.github_handle}`) && (
-              <LinkRow label="GitHub" href={links.github || `https://github.com/${member.github_handle}`} />
-            )}
+            <LinkRow label="GitHub" href={links.github || `https://github.com/${member.github_handle}`} />
             {links.pmDeploy && <LinkRow label="EudaPM deploy" href={links.pmDeploy} />}
             {links.pmRepo && <LinkRow label="EudaPM repo" href={links.pmRepo} />}
             {links.chatDeploy && <LinkRow label="EudaChat deploy" href={links.chatDeploy} />}
             {links.chatRepo && <LinkRow label="EudaChat repo" href={links.chatRepo} />}
             {links.showcaseDeploy && <LinkRow label="Showcase" href={links.showcaseDeploy} />}
-            {(links.forth || SITE.forthUrl) && (
-              <LinkRow label="Forth PM" href={links.forth || SITE.forthUrl} />
-            )}
+            <LinkRow label="Forth PM" href={links.forth || SITE.forthUrl} />
           </div>
         </div>
       </div>
@@ -131,7 +135,9 @@ export default async function PersonPage ({ params }: Props) {
             {owned.map((project) => (
               <li key={project.id} className="rounded-xl border border-[var(--border)] p-4">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold">{project.title}</p>
+                  <a href={SITE.forthUrl} target="_blank" rel="noreferrer" className="font-semibold hover:text-[var(--primary)]">
+                    {project.title}
+                  </a>
                   <span className="text-xs font-semibold uppercase text-[var(--accent-foreground)]">{project.status}</span>
                 </div>
                 <p className="mt-1 text-sm text-[var(--muted)]">{project.note}</p>

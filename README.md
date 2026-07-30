@@ -9,7 +9,11 @@ Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaC
 
 ## Eligibility / PM status
 
-PM status on this site comes from the committed Forth snapshot in [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app) plus portfolio deep links to each member’s EudaPM / EudaChat deploys when known. Refresh with `npm run sync:forth` after editing the JSON from live Forth.
+PM status from Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Refresh with `npm run sync:forth` after editing from live Forth.
+
+**Reviewer scorecard (/25):** [SCORECARD.md](SCORECARD.md)
+
+**Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
 
 ## Partner intro
 

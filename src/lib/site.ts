@@ -27,6 +27,8 @@ export type ShowcaseMember = {
   bio: string | null
   avatar_url: string | null
   banner_url: string | null
+  campus: string | null
+  skills: string[]
   opt_out: boolean
   links: MemberLinks | null
   claimed_by: string | null

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { EudaMarketLogo } from '@/components/EudaMarketLogo'
+import { HeaderAuth } from '@/components/HeaderAuth'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { SITE } from '@/lib/site'
 import { ui } from '@/lib/ui'
@@ -13,8 +14,8 @@ const NAV = [
 export function SiteHeader () {
   return (
     <header className="app-header sticky top-0 z-40">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <EudaMarketLogo />
           <span className="font-display text-base font-bold">
             <span className="text-gradient">{SITE.name}</span>
@@ -27,14 +28,9 @@ export function SiteHeader () {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
           <ThemeToggle />
-          <Link href="/app/profile" className={ui.btnGhost}>
-            Claim profile
-          </Link>
-          <Link href="/partners#intro" className={ui.btnPrimary}>
-            Request intro
-          </Link>
+          <HeaderAuth />
         </div>
       </div>
     </header>

@@ -44,7 +44,11 @@ export function PartnerIntroForm () {
       return
     }
 
-    setSuccess('Intro request received. The placement lead will follow up shortly.')
+    setSuccess(
+      body.emailed
+        ? 'Intro request saved and emailed to the placement lead.'
+        : 'Intro request saved to the database. Email pending until RESEND_API_KEY is configured — leads are never lost.'
+    )
     setCompany('')
     setContactName('')
     setEmail('')

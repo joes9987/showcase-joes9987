@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
@@ -11,15 +12,24 @@ type Props = {
   email: string
   suggestedHandle: string
   existing: ShowcaseMember | null
+  alreadyClaimed: boolean
 }
 
-export function ProfileClaimEditor ({ userId, email, suggestedHandle, existing }: Props) {
+export function ProfileClaimEditor ({
+  userId,
+  email,
+  suggestedHandle,
+  existing,
+  alreadyClaimed
+}: Props) {
   const router = useRouter()
   const [githubHandle, setGithubHandle] = useState(existing?.github_handle ?? suggestedHandle)
   const [displayName, setDisplayName] = useState(existing?.display_name ?? email.split('@')[0] ?? '')
   const [headline, setHeadline] = useState(existing?.headline ?? '')
   const [bio, setBio] = useState(existing?.bio ?? '')
   const [avatarUrl, setAvatarUrl] = useState(existing?.avatar_url ?? '')
+  const [campus, setCampus] = useState(existing?.campus ?? '')
+  const [skills, setSkills] = useState((existing?.skills ?? []).join(', '))
   const [optOut, setOptOut] = useState(existing?.opt_out ?? false)
   const [pmDeploy, setPmDeploy] = useState(existing?.links?.pmDeploy ?? '')
   const [chatDeploy, setChatDeploy] = useState(existing?.links?.chatDeploy ?? '')
@@ -42,6 +52,11 @@ export function ProfileClaimEditor ({ userId, email, suggestedHandle, existing }
       return
     }
 
+    const skillList = skills
+      .split(/[,]+/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+
     const supabase = createClient()
     const payload = {
       github_handle: handle,
@@ -49,6 +64,8 @@ export function ProfileClaimEditor ({ userId, email, suggestedHandle, existing }
       headline: headline.trim() || null,
       bio: bio.trim() || null,
       avatar_url: avatarUrl.trim() || null,
+      campus: campus.trim() || null,
+      skills: skillList,
       opt_out: optOut,
       claimed_by: userId,
       updated_at: new Date().toISOString(),
@@ -82,10 +99,19 @@ export function ProfileClaimEditor ({ userId, email, suggestedHandle, existing }
     <form onSubmit={(e) => void onSubmit(e)} className={`${ui.card} mx-auto max-w-lg space-y-4`}>
       <div>
         <p className={ui.eyebrow}>Your showcase card</p>
-        <h1 className="font-display mt-1 text-2xl font-semibold">Claim or edit your public profile</h1>
+        <h1 className="font-display mt-1 text-2xl font-semibold">
+          {alreadyClaimed ? 'Edit your public profile' : 'Claim your public profile'}
+        </h1>
         <p className="mt-2 text-sm text-[var(--muted)]">
           Signed in as {email}. Public pages never show your email.
         </p>
+        {alreadyClaimed && existing?.github_handle && (
+          <p className="mt-2 text-sm">
+            <Link href={`/people/${existing.github_handle}`} className={ui.linkAccent}>
+              View public profile →
+            </Link>
+          </p>
+        )}
       </div>
       <label className={ui.label}>
         GitHub handle
@@ -104,8 +130,27 @@ export function ProfileClaimEditor ({ userId, email, suggestedHandle, existing }
         <textarea className={`${ui.field} min-h-[100px]`} value={bio} onChange={(e) => setBio(e.target.value)} maxLength={800} />
       </label>
       <label className={ui.label}>
+        Campus
+        <input
+          className={ui.field}
+          value={campus}
+          onChange={(e) => setCampus(e.target.value)}
+          placeholder="Boston · London · Dubai…"
+        />
+      </label>
+      <label className={ui.label}>
+        Skills / projects
+        <input
+          className={ui.field}
+          value={skills}
+          onChange={(e) => setSkills(e.target.value)}
+          placeholder="Next.js, Supabase, Forth, EudaPM"
+        />
+        <span className="mt-1 block text-xs font-normal text-[var(--muted)]">Comma-separated</span>
+      </label>
+      <label className={ui.label}>
         Avatar URL
-        <input className={ui.field} value={avatarUrl} onChange={(e) => setAvatarUrl(e.target.value)} placeholder="https://…" />
+        <input className={ui.field} value={avatarUrl} onChange={(e) => setAvatarUrl(e.target.value)} placeholder="Leave blank to use GitHub avatar" />
       </label>
       <label className={ui.label}>
         EudaPM deploy URL

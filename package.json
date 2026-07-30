@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed:roster": "node --env-file=.env.local scripts/seed-roster.mjs",
     "sync:forth": "node scripts/sync-forth.mjs",
-    "seed:sql": "node scripts/generate-seed-sql.mjs"
+    "seed:sql": "node scripts/generate-seed-sql.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

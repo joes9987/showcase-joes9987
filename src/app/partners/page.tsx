@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { PartnerIntroForm } from '@/components/PartnerIntroForm'
+import { ShowcaseRsvpForm } from '@/components/ShowcaseRsvpForm'
 import { SITE } from '@/lib/site'
 import { ui } from '@/lib/ui'
 
 export const metadata: Metadata = {
   title: 'Partners',
-  description: 'How to hire from the Hult Summer Pilot and request an introduction to builders.'
+  description: 'How to hire from the Hult Summer Pilot, request an introduction, and RSVP for the showcase event.'
 }
 
 export default function PartnersPage () {
@@ -27,12 +28,23 @@ export default function PartnersPage () {
               confirmed with the placement lead ({SITE.placementEmail}) before any engagement letter.
             </p>
             <ol className="list-decimal space-y-2 pl-5 text-sm">
-              <li>Browse <a className={ui.linkAccent} href="/people">people</a> and portfolio links.</li>
+              <li>
+                Browse and filter <a className={ui.linkAccent} href="/people">people</a> by skill or project.
+              </li>
               <li>Open live apps (EudaPM, EudaChat, Forth, peer deploys).</li>
               <li>Submit the intro form with the handles you care about.</li>
+              <li>RSVP for the end-of-pilot showcase event below.</li>
               <li>We reply from the placement inbox with next steps.</li>
             </ol>
+            <p className="text-sm text-[var(--muted)]">
+              Privacy: opted-out builders appear as private placeholders (example:{' '}
+              <a className={ui.linkAccent} href="/people/rebekah-dev">
+                /people/rebekah-dev
+              </a>
+              ).
+            </p>
           </div>
+          <ShowcaseRsvpForm />
         </section>
         <PartnerIntroForm />
       </div>

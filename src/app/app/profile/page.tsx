@@ -25,7 +25,7 @@ export default async function ProfileClaimPage () {
 
   const { data: existing } = await supabase
     .from('showcase_members')
-    .select('github_handle, display_name, headline, bio, avatar_url, banner_url, opt_out, links, claimed_by, updated_at')
+    .select('github_handle, display_name, headline, bio, avatar_url, banner_url, campus, skills, opt_out, links, claimed_by, updated_at')
     .eq('claimed_by', user.id)
     .maybeSingle()
 
@@ -41,8 +41,14 @@ export default async function ProfileClaimPage () {
     email.split('@')[0]?.replace(/[^A-Za-z0-9-]/g, '').slice(0, 39) ??
     'your-handle'
 
+  const alreadyClaimed = Boolean(existing?.github_handle)
+
   const seeded: ShowcaseMember | null = existing
-    ? (existing as ShowcaseMember)
+    ? {
+        ...(existing as ShowcaseMember),
+        campus: (existing as ShowcaseMember).campus ?? null,
+        skills: (existing as ShowcaseMember).skills ?? []
+      }
     : profile
       ? {
           github_handle: suggestedHandle,
@@ -51,6 +57,8 @@ export default async function ProfileClaimPage () {
           bio: profile.bio ?? null,
           avatar_url: profile.avatar_url ?? null,
           banner_url: profile.banner_url ?? null,
+          campus: null,
+          skills: [],
           opt_out: false,
           links: null,
           claimed_by: user.id
@@ -64,6 +72,7 @@ export default async function ProfileClaimPage () {
         email={email}
         suggestedHandle={suggestedHandle}
         existing={seeded}
+        alreadyClaimed={alreadyClaimed}
       />
     </div>
   )
