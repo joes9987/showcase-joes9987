@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EudaMarket
 
-## Getting Started
+Partner-facing public showcase for the **Hult Summer Pilot 2026**.
 
-First, run the development server:
+Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaChat**, read **Forth** PM status from a real daily snapshot, and request a warm intro.
+
+**Production:** https://showcase-joes9987.vercel.app  
+**Repo:** https://github.com/joes9987/showcase-joes9987
+
+## Eligibility / PM status
+
+PM status on this site comes from the committed Forth snapshot in [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app) plus portfolio deep links to each member’s EudaPM / EudaChat deploys when known. Refresh with `npm run sync:forth` after editing the JSON from live Forth.
+
+## Partner intro
+
+`/partners` → form posts to `POST /api/partner-intro`, which always persists to `partner_requests` (fail-open). If `RESEND_API_KEY` is set, the placement lead is emailed as well.
+
+Placement fee summary: ~**25% of first-year cash compensation** for successful hires (confirm terms with the placement lead before engagement).
+
+## Local setup
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use the same Supabase URL/anon key as EudaPM / EudaChat. Public pages work without signing in.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Schema + seed
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Apply `supabase/migrations/001_eudamarket.sql` to project `vidprovlxevofniwyhgs` (via linked `pm-joes9987` CLI: `supabase db push --linked`).
+2. Seed roster: set `SUPABASE_SERVICE_ROLE_KEY` and run `npm run seed:roster`, or run `npm run seed:sql` and execute the SQL in the Supabase SQL editor.
 
-## Learn More
+## Claim your profile
 
-To learn more about Next.js, take a look at the following resources:
+Sign in with the same email as EudaPM / EudaChat → **Claim profile** → enrich bio, avatar, and deploy links. Cookies are per-host (no silent SSO across `*.vercel.app`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sample profiles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- https://showcase-joes9987.vercel.app/people/joes9987
+- https://showcase-joes9987.vercel.app/people/CodingWCal
+- https://showcase-joes9987.vercel.app/people/nikjain15
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js 16 · React 19 · Tailwind 4 · Supabase Auth SSR · next-themes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [AGENTS.md](AGENTS.md) for agent conventions.

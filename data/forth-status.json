@@ -1,0 +1,37 @@
+{
+  "source": "https://forth-bice.vercel.app",
+  "sourceLabel": "Forth — winning cohort PM platform",
+  "updatedAt": "2026-07-30T22:00:00.000Z",
+  "summary": "Forth is the Summer Pilot Project 1 winner. Cohort members track tickets, pace, and proof of progress in signed-in guild workspaces. This snapshot is refreshed for EudaMarket partner pages (daily minimum).",
+  "projects": [
+    {
+      "id": "forth-core",
+      "title": "Forth cloud sync & guild workspace",
+      "status": "live",
+      "owner": "CodingWCal",
+      "note": "Conflict-safe sync, offline/retry UX contributions in flight; production at forth-bice.vercel.app"
+    },
+    {
+      "id": "phase-1-pm",
+      "title": "Phase 1 — Project management",
+      "status": "operating",
+      "owner": "cohort",
+      "note": "Winning PM platform operates for the full cohort; peers ship tickets against the Forth backlog"
+    },
+    {
+      "id": "phase-1-comms",
+      "title": "Phase 1 — Internal communications",
+      "status": "review",
+      "owner": "cohort",
+      "note": "Comms platforms shipped (EudaChat, Rally, Banter, teamwrk, …); peer review + private votes"
+    },
+    {
+      "id": "phase-1-showcase",
+      "title": "Phase 1 — Public showcase",
+      "status": "building",
+      "owner": "cohort",
+      "note": "Partner-facing showcase week (Jul 30 – Aug 5); EudaMarket and peer builds compete for vote"
+    }
+  ],
+  "howToRefresh": "Update this file from live Forth / staff notes and bump updatedAt. Or run npm run sync:forth after documenting a scrape source."
+}
