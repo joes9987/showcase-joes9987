@@ -33,6 +33,24 @@ export function fallbackRoster (): ShowcaseMember[] {
   }))
 }
 
+/** Prefer richer portfolio cards on public grids when DB rows are thin. */
+export function mergeRosterEnrichment (member: ShowcaseMember): ShowcaseMember {
+  const seed = fallbackRoster().find(
+    (r) => r.github_handle.toLowerCase() === member.github_handle.toLowerCase()
+  )
+  if (!seed) return member
+
+  const links = { ...(seed.links ?? {}), ...(member.links ?? {}) }
+  return {
+    ...member,
+    headline: member.headline ?? seed.headline,
+    bio: member.bio ?? seed.bio,
+    campus: member.campus ?? seed.campus,
+    skills: (member.skills?.length ? member.skills : seed.skills) ?? [],
+    links
+  }
+}
+
 export async function listPublicMembers (): Promise<ShowcaseMember[]> {
   if (!isSupabaseConfigured()) {
     return fallbackRoster().filter((m) => !m.opt_out)
@@ -49,11 +67,13 @@ export async function listPublicMembers (): Promise<ShowcaseMember[]> {
     if (error || !data?.length) {
       return fallbackRoster().filter((m) => !m.opt_out)
     }
-    return (data as ShowcaseMember[]).map((m) => ({
-      ...m,
-      campus: m.campus ?? null,
-      skills: m.skills ?? []
-    }))
+    return (data as ShowcaseMember[]).map((m) =>
+      mergeRosterEnrichment({
+        ...m,
+        campus: m.campus ?? null,
+        skills: m.skills ?? []
+      })
+    )
   } catch {
     return fallbackRoster().filter((m) => !m.opt_out)
   }
@@ -90,11 +110,11 @@ export async function getMember (handle: string): Promise<ShowcaseMember | null>
 
       if (data) {
         if (data.opt_out) return privatePlaceholder(data.github_handle)
-        return {
+        return mergeRosterEnrichment({
           ...(data as ShowcaseMember),
           campus: (data as ShowcaseMember).campus ?? null,
           skills: (data as ShowcaseMember).skills ?? []
-        }
+        })
       }
 
       const { count } = await supabase

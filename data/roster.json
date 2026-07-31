@@ -1,34 +1,302 @@
 [
-  {"github_handle":"joes9987","display_name":"Joseph Singh","headline":"Euda suite — PM, Chat, Market","campus":"Boston","skills":["EudaPM","EudaChat","EudaMarket","Next.js","Supabase"],"links":{"github":"https://github.com/joes9987","pmRepo":"https://github.com/joes9987/pm-joes9987","pmDeploy":"https://pm-joes9987.vercel.app","chatRepo":"https://github.com/joes9987/comms-joes9987","chatDeploy":"https://comms-joes9987.vercel.app","showcaseRepo":"https://github.com/joes9987/showcase-joes9987","showcaseDeploy":"https://showcase-joes9987.vercel.app","forth":"https://forth-bice.vercel.app"}},
-  {"github_handle":"CodingWCal","display_name":"Calvin","headline":"Forth — winning cohort PM platform","campus":"Boston","skills":["Forth","PM","sync"],"links":{"github":"https://github.com/CodingWCal","pmDeploy":"https://forth-bice.vercel.app","forth":"https://forth-bice.vercel.app"}},
-  {"github_handle":"rogerSuperBuilderAlpha","display_name":"Roger Hunt","headline":"Program director","campus":"Boston","skills":["curriculum","platform"],"links":{"github":"https://github.com/rogerSuperBuilderAlpha"}},
-  {"github_handle":"nikjain15","display_name":"Nik Jain","headline":"Rally — cohort comms","campus":"Boston","skills":["Rally","comms","Firebase"],"links":{"github":"https://github.com/nikjain15"}},
-  {"github_handle":"gge513","display_name":"George","headline":"Tavern — cohort comms","skills":["Tavern","comms"],"links":{"github":"https://github.com/gge513"}},
-  {"github_handle":"kureen-cyber","display_name":"Kureen","headline":"Banter — cohort comms","skills":["Banter","comms","Supabase"],"links":{"github":"https://github.com/kureen-cyber"}},
-  {"github_handle":"lvcasmadeit","display_name":"Lucas","headline":"teamwrk — cohort ops","skills":["teamwrk","comms"],"links":{"github":"https://github.com/lvcasmadeit"}},
-  {"github_handle":"jiaxinaspenlin-dotcom","display_name":"Jiaxin","headline":"Ember — cohort platform","skills":["Ember","Python"],"links":{"github":"https://github.com/jiaxinaspenlin-dotcom"}},
-  {"github_handle":"priyanshshahh","display_name":"Priyansh Shah","headline":"Cohort communications","skills":["comms"],"links":{"github":"https://github.com/priyanshshahh"}},
-  {"github_handle":"kperpignant","display_name":"Karlee Perpignant","headline":"Buddywire — peer support","skills":["Buddywire","comms"],"links":{"github":"https://github.com/kperpignant"}},
-  {"github_handle":"alaskalam","display_name":"Alaska","headline":"Full-stack cohort builder","skills":["Next.js"],"links":{"github":"https://github.com/alaskalam"}},
-  {"github_handle":"zukhriddingit","display_name":"Zukhriddin","headline":"Full-stack cohort builder","skills":["TypeScript"],"links":{"github":"https://github.com/zukhriddingit"}},
-  {"github_handle":"jj-javascript","display_name":"JJ","headline":"Archivist — knowledge base","skills":["Archivist","comms"],"links":{"github":"https://github.com/jj-javascript"}},
-  {"github_handle":"artira","display_name":"Artira","headline":"Full-stack cohort builder","skills":["React"],"links":{"github":"https://github.com/artira"}},
-  {"github_handle":"arjun-singh2127","display_name":"Arjun Singh","headline":"Full-stack cohort builder","skills":["Next.js"],"links":{"github":"https://github.com/arjun-singh2127"}},
-  {"github_handle":"ramyatolety","display_name":"Ramya Tolety","headline":"Beacon — cohort product","skills":["Beacon"],"links":{"github":"https://github.com/RamyaTolety"}},
-  {"github_handle":"r3s0lv343vr","display_name":"Resolve","headline":"lnq — cohort product","skills":["lnq"],"links":{"github":"https://github.com/r3s0lv343vr"}},
-  {"github_handle":"raven-dubgub","display_name":"Raven","headline":"Cohort communications","skills":["comms"],"links":{"github":"https://github.com/RAVEN-dubgub"}},
-  {"github_handle":"godwinkamau","display_name":"Godwin Kamau","headline":"Full-stack cohort builder","skills":["TypeScript"],"links":{"github":"https://github.com/godwinkamau"}},
-  {"github_handle":"solzco1","display_name":"Solzco","headline":"Full-stack cohort builder","skills":["Next.js"],"links":{"github":"https://github.com/solzco1"}},
-  {"github_handle":"lorra-v","display_name":"Lorra","headline":"Full-stack cohort builder","skills":["React"],"links":{"github":"https://github.com/lorra-v"}},
-  {"github_handle":"kiaracaesar5627","display_name":"Kiara Caesar","headline":"Full-stack cohort builder","skills":["TypeScript"],"links":{"github":"https://github.com/kiaracaesar5627"}},
-  {"github_handle":"divyaprakash04","display_name":"Divya Prakash","headline":"Full-stack cohort builder","skills":["Next.js"],"links":{"github":"https://github.com/divyaprakash04"}},
-  {"github_handle":"frankgomezdev","display_name":"Frank Gomez","headline":"Full-stack cohort builder","skills":["React"],"links":{"github":"https://github.com/frankgomezdev"}},
-  {"github_handle":"studmuffin01","display_name":"Studmuffin","headline":"Full-stack cohort builder","skills":["TypeScript"],"links":{"github":"https://github.com/studmuffin01"}},
-  {"github_handle":"SuperCUDA","display_name":"SuperCUDA","headline":"Full-stack cohort builder","skills":["systems"],"links":{"github":"https://github.com/SuperCUDA"}},
-  {"github_handle":"paramjeet-singh-neu","display_name":"Paramjeet Singh","headline":"Full-stack cohort builder","campus":"Boston","skills":["Next.js"],"links":{"github":"https://github.com/paramjeet-singh-neu"}},
-  {"github_handle":"celiciakitty-creator","display_name":"Celica","headline":"Full-stack cohort builder","skills":["design"],"links":{"github":"https://github.com/celiciakitty-creator"}},
-  {"github_handle":"mitchelldante99","display_name":"Mitchell Dante","headline":"Full-stack cohort builder","skills":["TypeScript"],"links":{"github":"https://github.com/mitchelldante99"}},
-  {"github_handle":"jayyyw34","display_name":"Jay","headline":"Full-stack cohort builder","skills":["React"],"links":{"github":"https://github.com/jayyyw34"}},
-  {"github_handle":"josie-ctrl","display_name":"Josie","headline":"Full-stack cohort builder","skills":["Next.js"],"links":{"github":"https://github.com/josie-ctrl"}},
-  {"github_handle":"rebekah-dev","display_name":"Rebekah","headline":"Privacy demo — opted out","opt_out":true,"skills":[],"links":{"github":"https://github.com/rebekah-dev"}}
+  {
+    "github_handle": "joes9987",
+    "display_name": "Joseph Singh",
+    "headline": "Euda suite — PM, Chat, Market",
+    "bio": "Building the connected Euda suite for the Summer Pilot: project management, internal communications, and this partner-facing showcase. Focused on production deploys, peer review, and hiring-ready proof on GitHub.",
+    "campus": "Boston",
+    "skills": ["EudaPM", "EudaChat", "EudaMarket", "Next.js", "TypeScript"],
+    "links": {
+      "github": "https://github.com/joes9987",
+      "pmRepo": "https://github.com/joes9987/pm-joes9987",
+      "pmDeploy": "https://pm-joes9987.vercel.app",
+      "chatRepo": "https://github.com/joes9987/comms-joes9987",
+      "chatDeploy": "https://comms-joes9987.vercel.app",
+      "showcaseRepo": "https://github.com/joes9987/showcase-joes9987",
+      "showcaseDeploy": "https://showcase-joes9987.vercel.app",
+      "forth": "https://forth-bice.vercel.app"
+    }
+  },
+  {
+    "github_handle": "CodingWCal",
+    "display_name": "Calvin",
+    "headline": "Forth — winning cohort PM platform",
+    "bio": "Operator of Forth, the Project 1 winning project-management platform now used by the full cohort. Ships sync, guild workspaces, and the backlog peers work against each week.",
+    "campus": "Boston",
+    "skills": ["Forth", "PM", "product", "sync"],
+    "links": {
+      "github": "https://github.com/CodingWCal",
+      "pmRepo": "https://github.com/CodingWCal/forth",
+      "pmDeploy": "https://forth-bice.vercel.app",
+      "forth": "https://forth-bice.vercel.app"
+    }
+  },
+  {
+    "github_handle": "rogerSuperBuilderAlpha",
+    "display_name": "Roger Hunt",
+    "headline": "Program director — Hult Cohort",
+    "bio": "Designs and runs the Hult Cohort Developer Program: curriculum, platform, admissions, and partner pipeline. Open-source program materials live on GitHub.",
+    "campus": "Boston",
+    "skills": ["curriculum", "platform", "leadership"],
+    "links": {
+      "github": "https://github.com/rogerSuperBuilderAlpha",
+      "pmRepo": "https://github.com/rogerSuperBuilderAlpha/hult-cohort-program"
+    }
+  },
+  {
+    "github_handle": "nikjain15",
+    "display_name": "Nik Jain",
+    "headline": "Rally — motivation-first cohort comms",
+    "bio": "Built Rally, a cohort communications platform centered on recognition, commitments, and cooperative goals—designed so quiet contributors are lifted, not shamed.",
+    "campus": "Boston",
+    "skills": ["Rally", "comms", "Next.js", "Firebase"],
+    "links": {
+      "github": "https://github.com/nikjain15",
+      "chatRepo": "https://github.com/nikjain15/rally-nikjain15",
+      "chatDeploy": "https://rally-nikjain15.vercel.app"
+    }
+  },
+  {
+    "github_handle": "gge513",
+    "display_name": "George",
+    "headline": "Tavern — cohort communications",
+    "bio": "Shipped Tavern for Phase 1 Project 2: a communications surface for cohort coordination, channels, and peer collaboration.",
+    "skills": ["Tavern", "comms", "TypeScript"],
+    "links": {
+      "github": "https://github.com/gge513",
+      "chatRepo": "https://github.com/gge513/comms-gge513"
+    }
+  },
+  {
+    "github_handle": "kureen-cyber",
+    "display_name": "Kureen",
+    "headline": "Banter — realtime cohort chat",
+    "bio": "Built Banter for Project 2: realtime messaging, channels, and notifications so the cohort can coordinate without leaving the stack.",
+    "skills": ["Banter", "comms", "Supabase", "Next.js"],
+    "links": {
+      "github": "https://github.com/kureen-cyber",
+      "chatRepo": "https://github.com/kureen-cyber/Banter"
+    }
+  },
+  {
+    "github_handle": "lvcasmadeit",
+    "display_name": "Lucas",
+    "headline": "teamwrk — cohort operations",
+    "bio": "Shipped teamwrk for Project 2: operations-minded communications and coordination for the Summer Pilot cohort.",
+    "skills": ["teamwrk", "comms", "TypeScript"],
+    "links": {
+      "github": "https://github.com/lvcasmadeit",
+      "chatRepo": "https://github.com/lvcasmadeit/teamwrk"
+    }
+  },
+  {
+    "github_handle": "jiaxinaspenlin-dotcom",
+    "display_name": "Jiaxin",
+    "headline": "Ember — cohort platform",
+    "bio": "Building Ember for the Summer Pilot—focused on clear product surfaces and reliable shipping under the cohort’s peer-review cadence.",
+    "skills": ["Ember", "Python", "product"],
+    "links": {
+      "github": "https://github.com/jiaxinaspenlin-dotcom",
+      "chatRepo": "https://github.com/jiaxinaspenlin-dotcom/Ember"
+    }
+  },
+  {
+    "github_handle": "priyanshshahh",
+    "display_name": "Priyansh Shah",
+    "headline": "Cohort communications builder",
+    "bio": "Phase 1 participant shipping communications and collaboration tools under public GitHub review.",
+    "skills": ["comms", "Next.js"],
+    "links": { "github": "https://github.com/priyanshshahh" }
+  },
+  {
+    "github_handle": "kperpignant",
+    "display_name": "Karlee Perpignant",
+    "headline": "Buddywire — peer support comms",
+    "bio": "Built Buddywire for Project 2: peer-support oriented communications for keeping the cohort connected and accountable.",
+    "skills": ["Buddywire", "comms", "Firebase"],
+    "links": {
+      "github": "https://github.com/kperpignant",
+      "chatRepo": "https://github.com/kperpignant/buddywire"
+    }
+  },
+  {
+    "github_handle": "alaskalam",
+    "display_name": "Alaska",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Shipping production PRs across Phase 1 projects with public peer review and deployable demos.",
+    "skills": ["Next.js", "TypeScript"],
+    "links": { "github": "https://github.com/alaskalam" }
+  },
+  {
+    "github_handle": "zukhriddingit",
+    "display_name": "Zukhriddin",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Building and reviewing cohort software in public—focused on TypeScript delivery and clear PR history.",
+    "skills": ["TypeScript", "Next.js"],
+    "links": { "github": "https://github.com/zukhriddingit" }
+  },
+  {
+    "github_handle": "jj-javascript",
+    "display_name": "JJ",
+    "headline": "Archivist — cohort knowledge base",
+    "bio": "Built Archivist for Project 2: a knowledge-base style communications tool for capturing and finding cohort context.",
+    "skills": ["Archivist", "comms", "TypeScript"],
+    "links": {
+      "github": "https://github.com/jj-javascript",
+      "chatRepo": "https://github.com/jj-javascript/Archivist"
+    }
+  },
+  {
+    "github_handle": "artira",
+    "display_name": "Artira",
+    "headline": "Phase 1 product builder",
+    "bio": "Participating across Phase 1 builds with React-focused UI work and peer-reviewed pull requests.",
+    "skills": ["React", "UI"],
+    "links": { "github": "https://github.com/artira" }
+  },
+  {
+    "github_handle": "arjun-singh2127",
+    "display_name": "Arjun Singh",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Shipping Next.js applications for the Summer Pilot under the cohort’s merge-and-review loop.",
+    "skills": ["Next.js", "TypeScript"],
+    "links": { "github": "https://github.com/arjun-singh2127" }
+  },
+  {
+    "github_handle": "ramyatolety",
+    "display_name": "Ramya Tolety",
+    "headline": "Beacon — cohort product",
+    "bio": "Building Beacon as a Phase 1 product surface—clear UX and inspectable GitHub history for partners.",
+    "skills": ["Beacon", "product", "TypeScript"],
+    "links": { "github": "https://github.com/RamyaTolety" }
+  },
+  {
+    "github_handle": "r3s0lv343vr",
+    "display_name": "Resolve",
+    "headline": "lnq — cohort product",
+    "bio": "Shipping lnq for the Summer Pilot with a focus on usable product loops and public code review.",
+    "skills": ["lnq", "product"],
+    "links": { "github": "https://github.com/r3s0lv343vr" }
+  },
+  {
+    "github_handle": "raven-dubgub",
+    "display_name": "Raven",
+    "headline": "Cohort communications builder",
+    "bio": "Phase 1 communications contributor—building collaboration tools and accepting peer review in public.",
+    "skills": ["comms", "TypeScript"],
+    "links": { "github": "https://github.com/RAVEN-dubgub" }
+  },
+  {
+    "github_handle": "godwinkamau",
+    "display_name": "Godwin Kamau",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Delivering TypeScript-forward Phase 1 submissions with production deploys and peer feedback.",
+    "skills": ["TypeScript", "full-stack"],
+    "links": { "github": "https://github.com/godwinkamau" }
+  },
+  {
+    "github_handle": "solzco1",
+    "display_name": "Solzco",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Building Next.js applications for the cohort contest weeks—emphasizing shipping over pitch.",
+    "skills": ["Next.js", "React"],
+    "links": { "github": "https://github.com/solzco1" }
+  },
+  {
+    "github_handle": "lorra-v",
+    "display_name": "Lorra",
+    "headline": "Phase 1 product & UI",
+    "bio": "React-focused builder shipping Phase 1 work under public PR review and deploy checks.",
+    "skills": ["React", "UI"],
+    "links": { "github": "https://github.com/lorra-v" }
+  },
+  {
+    "github_handle": "kiaracaesar5627",
+    "display_name": "Kiara Caesar",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Participating across Phase 1 projects with TypeScript delivery and inspectable GitHub activity.",
+    "skills": ["TypeScript", "Next.js"],
+    "links": { "github": "https://github.com/kiaracaesar5627" }
+  },
+  {
+    "github_handle": "divyaprakash04",
+    "display_name": "Divya Prakash",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Shipping Next.js cohort projects with an emphasis on clear repositories and working demos.",
+    "skills": ["Next.js", "full-stack"],
+    "links": { "github": "https://github.com/divyaprakash04" }
+  },
+  {
+    "github_handle": "frankgomezdev",
+    "display_name": "Frank Gomez",
+    "headline": "Phase 1 React builder",
+    "bio": "React-oriented Phase 1 participant—building UIs and collaborating through peer-reviewed PRs.",
+    "skills": ["React", "UI"],
+    "links": { "github": "https://github.com/frankgomezdev" }
+  },
+  {
+    "github_handle": "studmuffin01",
+    "display_name": "Studmuffin",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Contributing TypeScript applications to the Summer Pilot with public code and peer review.",
+    "skills": ["TypeScript", "full-stack"],
+    "links": { "github": "https://github.com/studmuffin01" }
+  },
+  {
+    "github_handle": "SuperCUDA",
+    "display_name": "SuperCUDA",
+    "headline": "Systems-minded Phase 1 builder",
+    "bio": "Phase 1 participant with a systems focus—shipping under the cohort’s production and review constraints.",
+    "skills": ["systems", "TypeScript"],
+    "links": { "github": "https://github.com/SuperCUDA" }
+  },
+  {
+    "github_handle": "paramjeet-singh-neu",
+    "display_name": "Paramjeet Singh",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Northeastern-affiliated builder shipping Next.js work for the Hult Summer Pilot.",
+    "campus": "Boston",
+    "skills": ["Next.js", "TypeScript"],
+    "links": { "github": "https://github.com/paramjeet-singh-neu" }
+  },
+  {
+    "github_handle": "celiciakitty-creator",
+    "display_name": "Celica",
+    "headline": "Design-forward Phase 1 builder",
+    "bio": "Bringing design sensibility to Phase 1 product surfaces while shipping under peer review.",
+    "skills": ["design", "UI", "product"],
+    "links": { "github": "https://github.com/celiciakitty-creator" }
+  },
+  {
+    "github_handle": "mitchelldante99",
+    "display_name": "Mitchell Dante",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "TypeScript-focused Phase 1 builder with public repositories and contest-week delivery.",
+    "skills": ["TypeScript", "full-stack"],
+    "links": { "github": "https://github.com/mitchelldante99" }
+  },
+  {
+    "github_handle": "jayyyw34",
+    "display_name": "Jay",
+    "headline": "Phase 1 React builder",
+    "bio": "Shipping React-based Phase 1 work and participating in the cohort’s review-and-vote loop.",
+    "skills": ["React", "UI"],
+    "links": { "github": "https://github.com/jayyyw34" }
+  },
+  {
+    "github_handle": "josie-ctrl",
+    "display_name": "Josie",
+    "headline": "Phase 1 full-stack submissions",
+    "bio": "Building Next.js applications for the Summer Pilot with an emphasis on clear PRs and demos.",
+    "skills": ["Next.js", "TypeScript"],
+    "links": { "github": "https://github.com/josie-ctrl" }
+  },
+  {
+    "github_handle": "rebekah-dev",
+    "display_name": "Rebekah",
+    "headline": "Privacy demo — opted out",
+    "opt_out": true,
+    "skills": [],
+    "links": { "github": "https://github.com/rebekah-dev" }
+  }
 ]

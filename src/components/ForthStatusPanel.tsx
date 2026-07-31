@@ -16,7 +16,7 @@ export function ForthStatusPanel ({ status }: { status: ForthStatus }) {
           <h2 className="font-display mt-1 text-xl font-semibold">{status.sourceLabel}</h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--muted-foreground)]">{status.summary}</p>
           <p className="mt-3 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
-            Snapshot from Forth · updated {updated} · not lorem
+            Refreshed from live Forth · {updated}
           </p>
         </div>
         <a href={SITE.forthUrl} target="_blank" rel="noreferrer" className={ui.btnSecondary}>

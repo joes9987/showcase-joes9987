@@ -46,7 +46,7 @@ export function SiteFooter () {
             <span className="text-gradient">{SITE.name}</span>
           </p>
           <p className="mt-1 max-w-sm text-sm text-[var(--muted)]">
-            Public showcase for {SITE.cohort}. Same identity as EudaPM and EudaChat.
+            Public showcase for {SITE.cohort}. Connected with EudaPM and EudaChat.
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-sm">

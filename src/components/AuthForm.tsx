@@ -71,7 +71,7 @@ export function AuthForm ({ mode }: { mode: Mode }) {
       </button>
       {error && <p className={ui.alertError}>{error}</p>}
       <p className="text-sm text-[var(--muted)]">
-        Same Supabase account as EudaPM / EudaChat.{' '}
+        Same account as EudaPM / EudaChat.{' '}
         {mode === 'login' ? (
           <Link href="/signup" className={ui.linkAccent}>Sign up</Link>
         ) : (

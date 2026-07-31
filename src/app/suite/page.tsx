@@ -31,8 +31,8 @@ export default function SuitePage () {
       <p className={ui.eyebrow}>Cross-app</p>
       <h1 className={ui.pageTitle}>The Euda suite</h1>
       <p className={`${ui.pageSubtitle} mt-2 max-w-2xl`}>
-        One Supabase project, three surfaces. Same email account across PM and Chat; Market uses the same identity to claim a
-        public showcase card. Cookies are per-host—sign in once per app.
+        Three connected surfaces for the same cohort. Participants keep one account across project management and chat, then claim
+        a public showcase card here. Sign in once per app host—no silent SSO required.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {APPS.map((app) => (

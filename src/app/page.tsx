@@ -6,9 +6,21 @@ import { listPublicMembers } from '@/lib/members'
 import { SITE } from '@/lib/site'
 import { ui } from '@/lib/ui'
 
+function featuredScore (member: Awaited<ReturnType<typeof listPublicMembers>>[number]) {
+  const links = member.links ?? {}
+  let score = 0
+  if (member.bio) score += 3
+  if (member.campus) score += 1
+  if ((member.skills?.length ?? 0) >= 2) score += 2
+  if (links.pmDeploy || links.chatDeploy || links.showcaseDeploy) score += 4
+  if (links.pmRepo || links.chatRepo) score += 2
+  if (member.headline && !/full-stack cohort builder/i.test(member.headline)) score += 2
+  return score
+}
+
 export default async function HomePage () {
   const [members, forth] = await Promise.all([listPublicMembers(), loadForthStatus()])
-  const featured = members.slice(0, 6)
+  const featured = [...members].sort((a, b) => featuredScore(b) - featuredScore(a)).slice(0, 6)
 
   return (
     <div className={ui.pageMain}>
@@ -41,26 +53,27 @@ export default async function HomePage () {
       <section className="mt-12 max-w-3xl space-y-4 text-[var(--card-foreground)] leading-relaxed">
         <h2 className="font-display text-2xl font-semibold text-[var(--foreground)]">Why this cohort is hireable</h2>
         <p>
-          The Hult Summer Pilot is not a lecture series with slide decks. Each week, participants ship production software under
-          the same constraints hiring partners care about: public GitHub history, peer review, deploy URLs that actually load, and
-          a competitive vote that rewards usable products—not pitch theater. Project 1 produced a cohort project-management
-          platform; Forth won and now operates as the shared PM surface. Project 2 produced internal communications platforms
-          (including EudaChat). Project 3—this site—is the partner-facing showcase: a single place to inspect people, follow
-          their portfolio links into live apps, and request a warm intro when someone stands out.
+          The Hult Summer Pilot asks builders to prove themselves the way hiring teams already evaluate engineers: ship working
+          software in public, accept peer review, and keep a deploy URL that loads. Each week is a production cycle—not a case
+          competition with slides. Project 1 produced the cohort project-management platform; Forth won and now operates as the
+          shared workspace for tickets and pace. Project 2 produced internal communications tools used by the same participants.
+          Project 3—this site—is the partner-facing showcase: browse people, open their GitHub and live apps, and request an
+          introduction when someone stands out.
         </p>
         <p>
-          EudaMarket sits in a shared suite with EudaPM and EudaChat on the same Supabase identity. That means the profile you
-          claim here is the same account you use to manage work and talk with peers. Partners do not need another login to evaluate
-          builders: open a profile, click through to GitHub repositories and Vercel deploys, then read the Forth status strip for
-          what the cohort is currently building. PM status on this site comes from a committed Forth snapshot refreshed for partner
-          pages, plus deep links into live EudaPM and EudaChat deploys—proof you can click, not brochure copy.
+          EudaMarket is part of a connected suite with EudaPM and EudaChat. Participants use one account across those surfaces, so
+          the builder you meet here is the same person managing work and collaborating with peers day to day. You do not need a
+          separate login to evaluate them: open a profile, follow links to repositories and production deploys, and check the Forth
+          status strip for what the cohort is shipping this week. That status is refreshed from the live Forth platform for partner
+          pages—so the narrative stays tied to real project progress, not marketing copy.
         </p>
         <p>
-          If you are hiring for internships, associate engineering, or product roles that reward agentic builders, start on the
-          people grid. Look for merged PRs, honest READMEs, and deploy links that match the submission. When you want a conversation,
-          use the partners page: we persist every intro request and notify the placement lead. Placement fees are summarized there
-          (~25% of first-year cash compensation for successful hires). Opted-out participants appear as private placeholders so the
-          roster stays complete without exposing anyone who prefers not to be public.
+          If you are hiring for internships, associate engineering, or product roles that reward builders who can operate with
+          modern tooling, start on the people grid. Filter by skill or project, read merged PRs and READMEs, and click through to
+          running demos. When you want a conversation, use the partners page—we route intro requests to the placement lead and
+          confirm student interest before scheduling. Placement terms are summarized there (typically about 25% of first-year cash
+          compensation for successful hires). Participants who prefer privacy can opt out; their page shows a private placeholder
+          without removing them from the enrolled roster.
         </p>
       </section>
 
