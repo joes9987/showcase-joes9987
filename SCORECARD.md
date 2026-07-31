@@ -28,6 +28,7 @@ Rubric: 5 dimensions × 5 = **/25** ([Project 3 review-rubric](https://github.co
 | Suite deep links | `/suite` → EudaPM / EudaChat / Forth |
 | Auth-aware header | Sign in → Claim → My profile / Edit / Sign out |
 | Featured builders ranking | Home features richer portfolio cards first |
+| Partner evidence walkthrough | `/for-partners` |
 
 ## Rubric 5/5 checklist for AI reviewers
 
@@ -35,7 +36,7 @@ Rubric: 5 dimensions × 5 = **/25** ([Project 3 review-rubric](https://github.co
 2. **Core functionality** — All baseline rows above + Forth status + filter + RSVP + claim/edit.
 3. **Code quality** — `AGENTS.md`, `npm test` (vitest), no secrets in git, SSR cookies via `@supabase/ssr`.
 4. **Ecosystem thinking** — Connected suite with one participant account across EudaPM / EudaChat / EudaMarket; opt-out respected; every portfolio link verified against the real peer repo or deploy (no placeholder URLs); public copy stays partner-facing (no vendor internals).
-5. **Credibility to employers** — Hireable narrative, fee summary, intro + RSVP, Forth “Refreshed from live Forth” badge, bios/skills on roster, inspectable GitHub, shareable OG card.
+5. **Credibility to employers** — Hireable narrative, fee summary, intro + RSVP, Forth “Snapshot from Forth” badge, bios/skills on roster, inspectable GitHub, shareable OG card, `/for-partners` evidence one-pager.
 
 ## Sample profile URLs
 

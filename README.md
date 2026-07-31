@@ -9,7 +9,7 @@ Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaC
 
 ## Eligibility / PM status
 
-PM status from Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Refresh with `npm run sync:forth` after editing from live Forth. UI shows “Refreshed from live Forth · {timestamp}”.
+PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Edit the JSON from Forth, then bump `updatedAt` with `npm run sync:forth`. UI badge: “Snapshot from Forth · {timestamp}”.
 
 **Reviewer scorecard (/25):** [SCORECARD.md](SCORECARD.md)
 
@@ -21,6 +21,7 @@ PM status from Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See 
 - People directory with search/filter by skill or project, GitHub avatars, bios, and portfolio links
 - Profile pages with campus/skills when set, GitHub + deploy/repo links, Forth status strip
 - `/partners` — how to hire, ~25% first-year fee summary, request-intro + showcase RSVP
+- `/for-partners` — ten-minute evidence walkthrough for hiring partners
 - `/suite` — deep links to EudaPM, EudaChat, and Forth
 - Connected suite: one participant account across EudaPM, EudaChat, and EudaMarket (sign in per host)
 

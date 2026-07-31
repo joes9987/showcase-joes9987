@@ -127,28 +127,8 @@ export default async function PersonPage ({ params }: Props) {
         </div>
       </div>
 
-      {owned.length > 0 && (
-        <section className={`${ui.card} mt-8`}>
-          <p className={ui.eyebrow}>Forth / PM status</p>
-          <h2 className="font-display mt-1 text-xl font-semibold">Projects tied to this builder</h2>
-          <ul className="mt-4 space-y-3">
-            {owned.map((project) => (
-              <li key={project.id} className="rounded-xl border border-[var(--border)] p-4">
-                <div className="flex items-center justify-between gap-2">
-                  <a href={SITE.forthUrl} target="_blank" rel="noreferrer" className="font-semibold hover:text-[var(--primary)]">
-                    {project.title}
-                  </a>
-                  <span className="text-xs font-semibold uppercase text-[var(--accent-foreground)]">{project.status}</span>
-                </div>
-                <p className="mt-1 text-sm text-[var(--muted)]">{project.note}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
       <div className="mt-8">
-        <ForthStatusPanel status={forth} />
+        <ForthStatusPanel status={forth} variant="compact" highlightProjects={owned} />
       </div>
     </div>
   )

@@ -77,7 +77,7 @@ export default async function HomePage () {
         </p>
       </section>
 
-      <div className="mt-12">
+      <div id="forth-status" className="mt-12 scroll-mt-24">
         <ForthStatusPanel status={forth} />
       </div>
 

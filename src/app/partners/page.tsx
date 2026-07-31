@@ -44,6 +44,13 @@ export default function PartnersPage () {
               </Link>
               ).
             </p>
+            <p className="text-sm">
+              <Link className={ui.linkAccent} href="/for-partners">
+                How we present evidence →
+              </Link>
+              {' '}
+              (ten-minute partner walkthrough)
+            </p>
           </div>
           <ShowcaseRsvpForm />
         </section>

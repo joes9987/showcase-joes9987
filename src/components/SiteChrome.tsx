@@ -8,7 +8,8 @@ import { ui } from '@/lib/ui'
 const NAV = [
   { href: '/people', label: 'People' },
   { href: '/suite', label: 'Suite' },
-  { href: '/partners', label: 'Partners' }
+  { href: '/partners', label: 'Partners' },
+  { href: '/for-partners', label: 'Evidence' }
 ]
 
 export function SiteHeader () {
@@ -61,6 +62,9 @@ export function SiteFooter () {
           </a>
           <Link className={ui.linkAccent} href="/partners">
             Partners
+          </Link>
+          <Link className={ui.linkAccent} href="/for-partners">
+            Evidence
           </Link>
         </div>
       </div>

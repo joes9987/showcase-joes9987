@@ -25,7 +25,7 @@ Never expose emails on public pages. Opt-out members render a private placeholde
 - `partner_requests` — intro form submissions (anon insert; staff select)
 - `showcase_rsvps` — end-of-pilot showcase RSVP (anon insert; staff select)
 - `data/roster.json` — seed + offline fallback (+ merge enrichment when DB fields are thin)
-- `data/forth-status.json` — daily Forth PM snapshot (no public Forth API)
+- `data/forth-status.json` — manual daily Forth PM snapshot (no public Forth API; `npm run sync:forth` only bumps `updatedAt`)
 
 Migrations: `supabase/migrations/001_eudamarket.sql`, `002_showcase_partner_fields.sql`. Apply via linked **pm-joes9987** CLI (`supabase db query --linked -f …`).
 
@@ -38,7 +38,7 @@ npm run dev
 npm run build
 npm test
 npm run seed:roster          # needs SUPABASE_SERVICE_ROLE_KEY
-npm run sync:forth           # bump snapshot timestamp
+npm run sync:forth           # bump snapshot timestamp after editing forth-status.json
 ```
 
 ## Env
