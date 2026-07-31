@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { PartnerIntroForm } from '@/components/PartnerIntroForm'
 import { ShowcaseRsvpForm } from '@/components/ShowcaseRsvpForm'
 import { SITE } from '@/lib/site'
@@ -29,7 +30,7 @@ export default function PartnersPage () {
             </p>
             <ol className="list-decimal space-y-2 pl-5 text-sm">
               <li>
-                Browse and filter <a className={ui.linkAccent} href="/people">people</a> by skill or project.
+                Browse and filter <Link className={ui.linkAccent} href="/people">people</Link> by skill or project.
               </li>
               <li>Open live apps (EudaPM, EudaChat, Forth, peer deploys).</li>
               <li>Submit the intro form with the handles you care about.</li>
@@ -38,9 +39,9 @@ export default function PartnersPage () {
             </ol>
             <p className="text-sm text-[var(--muted)]">
               Privacy: opted-out builders appear as private placeholders (example:{' '}
-              <a className={ui.linkAccent} href="/people/rebekah-dev">
+              <Link className={ui.linkAccent} href="/people/rebekah-dev">
                 /people/rebekah-dev
-              </a>
+              </Link>
               ).
             </p>
           </div>
