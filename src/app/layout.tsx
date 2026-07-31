@@ -37,6 +37,11 @@ export const metadata: Metadata = {
     url: SITE.marketUrl,
     siteName: SITE.name,
     type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE.name} — proof over pitch`,
+    description: SITE.tagline
   }
 }
 
