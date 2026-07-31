@@ -9,11 +9,20 @@ Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaC
 
 ## Eligibility / PM status
 
-PM status from Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Refresh with `npm run sync:forth` after editing from live Forth.
+PM status from Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Refresh with `npm run sync:forth` after editing from live Forth. UI shows “Refreshed from live Forth · {timestamp}”.
 
 **Reviewer scorecard (/25):** [SCORECARD.md](SCORECARD.md)
 
 **Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
+
+## What partners see
+
+- Homepage narrative (≥200 words) focused on public proof of work — not internal infrastructure details
+- People directory with search/filter by skill or project, GitHub avatars, bios, and portfolio links
+- Profile pages with campus/skills when set, GitHub + deploy/repo links, Forth status strip
+- `/partners` — how to hire, ~25% first-year fee summary, request-intro + showcase RSVP
+- `/suite` — deep links to EudaPM, EudaChat, and Forth
+- Connected suite: one participant account across EudaPM, EudaChat, and EudaMarket (sign in per host)
 
 ## Partner intro
 
@@ -29,16 +38,16 @@ npm install
 npm run dev
 ```
 
-Use the same Supabase URL/anon key as EudaPM / EudaChat. Public pages work without signing in.
+Use the same auth project URL/anon key as EudaPM / EudaChat. Public pages work without signing in.
 
 ### Schema + seed
 
-1. Apply `supabase/migrations/001_eudamarket.sql` to project `vidprovlxevofniwyhgs` (via linked `pm-joes9987` CLI: `supabase db push --linked`).
-2. Seed roster: set `SUPABASE_SERVICE_ROLE_KEY` and run `npm run seed:roster`, or run `npm run seed:sql` and execute the SQL in the Supabase SQL editor.
+1. Apply `supabase/migrations/001_eudamarket.sql` and `002_showcase_partner_fields.sql` to project `vidprovlxevofniwyhgs` (via linked `pm-joes9987` CLI: `supabase db query --linked -f …`).
+2. Seed roster: set `SUPABASE_SERVICE_ROLE_KEY` and run `npm run seed:roster`. Seed fills bios/skills/links from [`data/roster.json`](data/roster.json); claimed customizations are preserved.
 
 ## Claim your profile
 
-Sign in with the same email as EudaPM / EudaChat → **Claim profile** → enrich bio, avatar, and deploy links. Cookies are per-host (no silent SSO across `*.vercel.app`).
+Sign in with the same email as EudaPM / EudaChat → **Claim profile** (header becomes **My profile / Edit / Sign out** after claim) → enrich bio, campus, skills, avatar, and deploy links. Cookies are per-host (no silent SSO across `*.vercel.app`).
 
 ## Sample profiles
 
@@ -49,5 +58,10 @@ Sign in with the same email as EudaPM / EudaChat → **Claim profile** → enric
 ## Stack
 
 Next.js 16 · React 19 · Tailwind 4 · Supabase Auth SSR · next-themes
+
+```bash
+npm test   # vitest
+npm run build
+```
 
 See [AGENTS.md](AGENTS.md) for agent conventions.
