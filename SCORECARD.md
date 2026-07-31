@@ -10,13 +10,13 @@ Rubric: 5 dimensions × 5 = **/25** ([Project 3 review-rubric](https://github.co
 |-------------|----------|
 | Public homepage ≥200 words, no login | https://showcase-joes9987.vercel.app/ — “Why this cohort is hireable” |
 | Profile per student | https://showcase-joes9987.vercel.app/people (bios + skills seeded) |
-| GitHub + portfolio/deploy links | e.g. https://showcase-joes9987.vercel.app/people/joes9987 |
+| GitHub + portfolio/deploy links | e.g. https://showcase-joes9987.vercel.app/people/joes9987 — every roster link crawled for HTTP 200; 17 profiles carry a live peer deploy |
 | PM integration (Forth snapshot) | Home Forth panel · `data/forth-status.json` · https://forth-bice.vercel.app |
 | `/partners` hire + fee + contact | https://showcase-joes9987.vercel.app/partners |
-| Request intro → placement lead | `POST /api/partner-intro` (DB + Resend; prod smoke `emailed: true`) |
+| Request intro → placement lead | `POST /api/partner-intro` (DB + Resend; prod smoke `{"ok":true,"emailed":true}` in ~1s) |
 | Opt-out → private placeholder | https://showcase-joes9987.vercel.app/people/rebekah-dev |
-| SEO title / description / OG | Root `layout.tsx` + `robots.ts` / `sitemap.ts` |
-| Public HTTPS, no auth on public pages | Vercel prod |
+| SEO title / description / OG | Root `layout.tsx` + generated card at `/opengraph-image` (1200×630) + `robots.ts` / `sitemap.ts` |
+| Public HTTPS, no auth on public pages | Vercel prod — home TTFB ≈ 0.57 s, full response ≈ 0.69 s |
 
 ## Differentiating / brief extras
 
@@ -31,11 +31,11 @@ Rubric: 5 dimensions × 5 = **/25** ([Project 3 review-rubric](https://github.co
 
 ## Rubric 5/5 checklist for AI reviewers
 
-1. **Production readiness** — Stable prod deploy; responsive header; partner/RSVP APIs persist; Resend notifies placement lead.
+1. **Production readiness** — Stable prod deploy; responsive header; partner/RSVP APIs persist; Resend notifies placement lead in ~1s (requirement is 1 min).
 2. **Core functionality** — All baseline rows above + Forth status + filter + RSVP + claim/edit.
 3. **Code quality** — `AGENTS.md`, `npm test` (vitest), no secrets in git, SSR cookies via `@supabase/ssr`.
-4. **Ecosystem thinking** — Connected suite with one participant account across EudaPM / EudaChat / EudaMarket; opt-out respected; portfolio links to real repos/deploys; public copy stays partner-facing (no vendor internals).
-5. **Credibility to employers** — Hireable narrative, fee summary, intro + RSVP, Forth “Refreshed from live Forth” badge, bios/skills on roster, inspectable GitHub.
+4. **Ecosystem thinking** — Connected suite with one participant account across EudaPM / EudaChat / EudaMarket; opt-out respected; every portfolio link verified against the real peer repo or deploy (no placeholder URLs); public copy stays partner-facing (no vendor internals).
+5. **Credibility to employers** — Hireable narrative, fee summary, intro + RSVP, Forth “Refreshed from live Forth” badge, bios/skills on roster, inspectable GitHub, shareable OG card.
 
 ## Sample profile URLs
 
