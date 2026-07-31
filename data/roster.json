@@ -35,24 +35,25 @@
     "github_handle": "rogerSuperBuilderAlpha",
     "display_name": "Roger Hunt",
     "headline": "Program director — Hult Cohort",
-    "bio": "Designs and runs the Hult Cohort Developer Program: curriculum, platform, admissions, and partner pipeline. Open-source program materials live on GitHub.",
+    "bio": "Designs and runs the Hult Cohort Developer Program: curriculum, platform, admissions, and partner pipeline. Program materials are open source on GitHub.",
     "campus": "Boston",
     "skills": ["curriculum", "platform", "leadership"],
     "links": {
       "github": "https://github.com/rogerSuperBuilderAlpha",
-      "pmRepo": "https://github.com/rogerSuperBuilderAlpha/hult-cohort-program"
+      "pmRepo": "https://github.com/rogerSuperBuilderAlpha/hult-cohort-program",
+      "pmDeploy": "https://site-nine-rouge-68.vercel.app"
     }
   },
   {
     "github_handle": "nikjain15",
     "display_name": "Nik Jain",
     "headline": "Rally — motivation-first cohort comms",
-    "bio": "Built Rally, a cohort communications platform centered on recognition, commitments, and cooperative goals—designed so quiet contributors are lifted, not shamed.",
+    "bio": "Built Rally, a cohort communications platform centered on recognition, commitments, and cooperative goals — designed so quiet contributors are lifted, not shamed.",
     "campus": "Boston",
     "skills": ["Rally", "comms", "Next.js", "Firebase"],
     "links": {
       "github": "https://github.com/nikjain15",
-      "chatRepo": "https://github.com/nikjain15/rally-nikjain15",
+      "chatRepo": "https://github.com/nikjain15/rally",
       "chatDeploy": "https://rally-nikjain15.vercel.app"
     }
   },
@@ -64,7 +65,8 @@
     "skills": ["Tavern", "comms", "TypeScript"],
     "links": {
       "github": "https://github.com/gge513",
-      "chatRepo": "https://github.com/gge513/comms-gge513"
+      "chatRepo": "https://github.com/gge513/tavern",
+      "chatDeploy": "https://tavern-cohort.vercel.app"
     }
   },
   {
@@ -75,7 +77,8 @@
     "skills": ["Banter", "comms", "Supabase", "Next.js"],
     "links": {
       "github": "https://github.com/kureen-cyber",
-      "chatRepo": "https://github.com/kureen-cyber/Banter"
+      "chatRepo": "https://github.com/kureen-cyber/Banter",
+      "chatDeploy": "https://banter-kureen-cyber.vercel.app"
     }
   },
   {
@@ -86,14 +89,15 @@
     "skills": ["teamwrk", "comms", "TypeScript"],
     "links": {
       "github": "https://github.com/lvcasmadeit",
-      "chatRepo": "https://github.com/lvcasmadeit/teamwrk"
+      "chatRepo": "https://github.com/lvcasmadeit/teamwrk",
+      "chatDeploy": "https://teamwrk-gamma.vercel.app"
     }
   },
   {
     "github_handle": "jiaxinaspenlin-dotcom",
     "display_name": "Jiaxin",
     "headline": "Ember — cohort platform",
-    "bio": "Building Ember for the Summer Pilot—focused on clear product surfaces and reliable shipping under the cohort’s peer-review cadence.",
+    "bio": "Building Ember for the Summer Pilot — focused on clear product surfaces and reliable shipping under the cohort's peer-review cadence.",
     "skills": ["Ember", "Python", "product"],
     "links": {
       "github": "https://github.com/jiaxinaspenlin-dotcom",
@@ -103,10 +107,13 @@
   {
     "github_handle": "priyanshshahh",
     "display_name": "Priyansh Shah",
-    "headline": "Cohort communications builder",
-    "bio": "Phase 1 participant shipping communications and collaboration tools under public GitHub review.",
+    "headline": "Cohort comms — shipped Project 2",
+    "bio": "Shipped a cohort communications platform for Project 2, including a public demo path so reviewers can explore without signing up.",
     "skills": ["comms", "Next.js"],
-    "links": { "github": "https://github.com/priyanshshahh" }
+    "links": {
+      "github": "https://github.com/priyanshshahh",
+      "chatDeploy": "https://cohort-comms-phi.vercel.app"
+    }
   },
   {
     "github_handle": "kperpignant",
@@ -116,14 +123,15 @@
     "skills": ["Buddywire", "comms", "Firebase"],
     "links": {
       "github": "https://github.com/kperpignant",
-      "chatRepo": "https://github.com/kperpignant/buddywire"
+      "chatRepo": "https://github.com/kperpignant/buddywire",
+      "chatDeploy": "https://buddywire.vercel.app"
     }
   },
   {
     "github_handle": "alaskalam",
     "display_name": "Alaska",
     "headline": "Phase 1 full-stack submissions",
-    "bio": "Shipping production PRs across Phase 1 projects with public peer review and deployable demos.",
+    "bio": "Shipping production pull requests across Phase 1 projects with public peer review and deployable demos.",
     "skills": ["Next.js", "TypeScript"],
     "links": { "github": "https://github.com/alaskalam" }
   },
@@ -131,7 +139,7 @@
     "github_handle": "zukhriddingit",
     "display_name": "Zukhriddin",
     "headline": "Phase 1 full-stack submissions",
-    "bio": "Building and reviewing cohort software in public—focused on TypeScript delivery and clear PR history.",
+    "bio": "Building and reviewing cohort software in public — focused on TypeScript delivery and clear pull request history.",
     "skills": ["TypeScript", "Next.js"],
     "links": { "github": "https://github.com/zukhriddingit" }
   },
@@ -143,48 +151,64 @@
     "skills": ["Archivist", "comms", "TypeScript"],
     "links": {
       "github": "https://github.com/jj-javascript",
-      "chatRepo": "https://github.com/jj-javascript/Archivist"
+      "chatRepo": "https://github.com/jj-javascript/Archivist",
+      "chatDeploy": "https://archivist-blue.vercel.app"
     }
   },
   {
     "github_handle": "artira",
     "display_name": "Artira",
-    "headline": "Phase 1 product builder",
-    "bio": "Participating across Phase 1 builds with React-focused UI work and peer-reviewed pull requests.",
-    "skills": ["React", "UI"],
-    "links": { "github": "https://github.com/artira" }
+    "headline": "Cohort comms — shipped Project 2",
+    "bio": "Shipped a cohort communications platform for Project 2 with React-focused UI work and peer-reviewed pull requests.",
+    "skills": ["comms", "React", "UI"],
+    "links": {
+      "github": "https://github.com/artira",
+      "chatDeploy": "https://cohort-comms-rho.vercel.app"
+    }
   },
   {
     "github_handle": "arjun-singh2127",
     "display_name": "Arjun Singh",
-    "headline": "Phase 1 full-stack submissions",
-    "bio": "Shipping Next.js applications for the Summer Pilot under the cohort’s merge-and-review loop.",
-    "skills": ["Next.js", "TypeScript"],
-    "links": { "github": "https://github.com/arjun-singh2127" }
+    "headline": "Cohort comms — shipped Project 2",
+    "bio": "Shipped a Next.js communications platform for Project 2 under the cohort's merge-and-review loop.",
+    "skills": ["comms", "Next.js", "TypeScript"],
+    "links": {
+      "github": "https://github.com/arjun-singh2127",
+      "chatDeploy": "https://comms-arjun-singh2127.vercel.app"
+    }
   },
   {
     "github_handle": "ramyatolety",
     "display_name": "Ramya Tolety",
     "headline": "Beacon — cohort product",
-    "bio": "Building Beacon as a Phase 1 product surface—clear UX and inspectable GitHub history for partners.",
+    "bio": "Built Beacon as a Phase 1 product surface — clear UX and inspectable GitHub history for partners.",
     "skills": ["Beacon", "product", "TypeScript"],
-    "links": { "github": "https://github.com/RamyaTolety" }
+    "links": {
+      "github": "https://github.com/RamyaTolety",
+      "chatDeploy": "https://beacon-ramyatolety.vercel.app"
+    }
   },
   {
     "github_handle": "r3s0lv343vr",
     "display_name": "Resolve",
     "headline": "lnq — cohort product",
-    "bio": "Shipping lnq for the Summer Pilot with a focus on usable product loops and public code review.",
+    "bio": "Shipped lnq for the Summer Pilot with a focus on usable product loops and public code review.",
     "skills": ["lnq", "product"],
-    "links": { "github": "https://github.com/r3s0lv343vr" }
+    "links": {
+      "github": "https://github.com/r3s0lv343vr",
+      "chatDeploy": "https://lnq-eight.vercel.app"
+    }
   },
   {
     "github_handle": "raven-dubgub",
     "display_name": "Raven",
-    "headline": "Cohort communications builder",
-    "bio": "Phase 1 communications contributor—building collaboration tools and accepting peer review in public.",
+    "headline": "Cohort comms — shipped Project 2",
+    "bio": "Shipped a cohort communications platform for Project 2 and participated in the public review-and-vote loop.",
     "skills": ["comms", "TypeScript"],
-    "links": { "github": "https://github.com/RAVEN-dubgub" }
+    "links": {
+      "github": "https://github.com/RAVEN-dubgub",
+      "chatDeploy": "https://comms-raven-dubgub.vercel.app"
+    }
   },
   {
     "github_handle": "godwinkamau",
@@ -198,25 +222,31 @@
     "github_handle": "solzco1",
     "display_name": "Solzco",
     "headline": "Phase 1 full-stack submissions",
-    "bio": "Building Next.js applications for the cohort contest weeks—emphasizing shipping over pitch.",
+    "bio": "Building Next.js applications for the cohort contest weeks — emphasizing shipping over pitch.",
     "skills": ["Next.js", "React"],
     "links": { "github": "https://github.com/solzco1" }
   },
   {
     "github_handle": "lorra-v",
     "display_name": "Lorra",
-    "headline": "Phase 1 product & UI",
-    "bio": "React-focused builder shipping Phase 1 work under public PR review and deploy checks.",
-    "skills": ["React", "UI"],
-    "links": { "github": "https://github.com/lorra-v" }
+    "headline": "Conexus — cohort comms",
+    "bio": "Shipped Conexus for Project 2: a communications surface for the cohort, built and reviewed in public.",
+    "skills": ["Conexus", "comms", "React"],
+    "links": {
+      "github": "https://github.com/lorra-v",
+      "chatDeploy": "https://conexus-rust.vercel.app"
+    }
   },
   {
     "github_handle": "kiaracaesar5627",
     "display_name": "Kiara Caesar",
-    "headline": "Phase 1 full-stack submissions",
-    "bio": "Participating across Phase 1 projects with TypeScript delivery and inspectable GitHub activity.",
-    "skills": ["TypeScript", "Next.js"],
-    "links": { "github": "https://github.com/kiaracaesar5627" }
+    "headline": "Cohort comms — shipped Project 2",
+    "bio": "Shipped a pilot communications platform for Project 2 with TypeScript delivery and inspectable GitHub activity.",
+    "skills": ["comms", "TypeScript", "Next.js"],
+    "links": {
+      "github": "https://github.com/kiaracaesar5627",
+      "chatDeploy": "https://pilot-hult-comms.vercel.app"
+    }
   },
   {
     "github_handle": "divyaprakash04",
@@ -230,7 +260,7 @@
     "github_handle": "frankgomezdev",
     "display_name": "Frank Gomez",
     "headline": "Phase 1 React builder",
-    "bio": "React-oriented Phase 1 participant—building UIs and collaborating through peer-reviewed PRs.",
+    "bio": "React-oriented Phase 1 participant — building interfaces and collaborating through peer-reviewed pull requests.",
     "skills": ["React", "UI"],
     "links": { "github": "https://github.com/frankgomezdev" }
   },
@@ -246,7 +276,7 @@
     "github_handle": "SuperCUDA",
     "display_name": "SuperCUDA",
     "headline": "Systems-minded Phase 1 builder",
-    "bio": "Phase 1 participant with a systems focus—shipping under the cohort’s production and review constraints.",
+    "bio": "Phase 1 participant with a systems focus — shipping under the cohort's production and review constraints.",
     "skills": ["systems", "TypeScript"],
     "links": { "github": "https://github.com/SuperCUDA" }
   },
@@ -254,7 +284,7 @@
     "github_handle": "paramjeet-singh-neu",
     "display_name": "Paramjeet Singh",
     "headline": "Phase 1 full-stack submissions",
-    "bio": "Northeastern-affiliated builder shipping Next.js work for the Hult Summer Pilot.",
+    "bio": "Boston-based builder shipping Next.js work for the Hult Summer Pilot.",
     "campus": "Boston",
     "skills": ["Next.js", "TypeScript"],
     "links": { "github": "https://github.com/paramjeet-singh-neu" }
@@ -268,18 +298,18 @@
     "links": { "github": "https://github.com/celiciakitty-creator" }
   },
   {
-    "github_handle": "mitchelldante99",
+    "github_handle": "mitchelldante99-create",
     "display_name": "Mitchell Dante",
     "headline": "Phase 1 full-stack submissions",
     "bio": "TypeScript-focused Phase 1 builder with public repositories and contest-week delivery.",
     "skills": ["TypeScript", "full-stack"],
-    "links": { "github": "https://github.com/mitchelldante99" }
+    "links": { "github": "https://github.com/mitchelldante99-create" }
   },
   {
     "github_handle": "jayyyw34",
     "display_name": "Jay",
     "headline": "Phase 1 React builder",
-    "bio": "Shipping React-based Phase 1 work and participating in the cohort’s review-and-vote loop.",
+    "bio": "Shipping React-based Phase 1 work and participating in the cohort's review-and-vote loop.",
     "skills": ["React", "UI"],
     "links": { "github": "https://github.com/jayyyw34" }
   },
@@ -287,7 +317,7 @@
     "github_handle": "josie-ctrl",
     "display_name": "Josie",
     "headline": "Phase 1 full-stack submissions",
-    "bio": "Building Next.js applications for the Summer Pilot with an emphasis on clear PRs and demos.",
+    "bio": "Building Next.js applications for the Summer Pilot with an emphasis on clear pull requests and demos.",
     "skills": ["Next.js", "TypeScript"],
     "links": { "github": "https://github.com/josie-ctrl" }
   },
