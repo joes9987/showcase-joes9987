@@ -25,10 +25,26 @@ const { data: existing } = await supabase
 
 const byHandle = new Map((existing ?? []).map((r) => [r.github_handle.toLowerCase(), r]))
 
+const JOE_SHOWCASE_REPO = 'https://github.com/joes9987/showcase-joes9987'
+const JOE_SHOWCASE_DEPLOY = 'https://showcase-joes9987.vercel.app'
+
+function stripStampedJoeShowcase (handle, links) {
+  if (!links || typeof links !== 'object') return links ?? {}
+  const out = { ...links }
+  if (String(handle).toLowerCase() === 'joes9987') return out
+  if (out.showcaseRepo === JOE_SHOWCASE_REPO) out.showcaseRepo = null
+  if (out.showcaseDeploy === JOE_SHOWCASE_DEPLOY) out.showcaseDeploy = null
+  return out
+}
+
 const rows = roster.map((row) => {
   const prev = byHandle.get(String(row.github_handle).toLowerCase())
   const claimed = Boolean(prev?.claimed_by)
-  // Seed fills empty fields; claimed customizations win when already set.
+  const rosterLinks = row.links ?? { github: `https://github.com/${row.github_handle}` }
+  const prevLinks = claimed && prev?.links
+    ? stripStampedJoeShowcase(row.github_handle, prev.links)
+    : {}
+  // Roster base, then claimed customizations (with Joe showcase stamp stripped for peers).
   return {
     github_handle: row.github_handle,
     display_name: (claimed && prev.display_name) ? prev.display_name : row.display_name,
@@ -40,8 +56,8 @@ const rows = roster.map((row) => {
     skills: (claimed && prev.skills?.length) ? prev.skills : (row.skills ?? []),
     opt_out: row.opt_out === true,
     links: {
-      ...(row.links ?? { github: `https://github.com/${row.github_handle}` }),
-      ...((claimed && prev?.links) ? prev.links : {})
+      ...rosterLinks,
+      ...prevLinks
     },
     claimed_by: prev?.claimed_by ?? null,
     updated_at: new Date().toISOString()

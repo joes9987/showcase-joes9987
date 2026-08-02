@@ -15,24 +15,36 @@ const NAV = [
 export function SiteHeader () {
   return (
     <header className="app-header sticky top-0 z-40">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <EudaMarketLogo />
-          <span className="font-display text-base font-bold">
-            <span className="text-gradient">{SITE.name}</span>
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-1 sm:flex" aria-label="Primary">
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3">
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/" className="flex shrink-0 items-center gap-2">
+            <EudaMarketLogo />
+            <span className="font-display text-base font-bold">
+              <span className="text-gradient">{SITE.name}</span>
+            </span>
+          </Link>
+          <nav className="hidden items-center gap-1 sm:flex" aria-label="Primary">
+            {NAV.map((item) => (
+              <Link key={item.href} href={item.href} className={ui.navLink}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
+            <ThemeToggle />
+            <HeaderAuth />
+          </div>
+        </div>
+        <nav
+          className="flex flex-wrap items-center gap-1 sm:hidden"
+          aria-label="Primary mobile"
+        >
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className={ui.navLink}>
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="flex min-w-0 flex-wrap items-center justify-end gap-2">
-          <ThemeToggle />
-          <HeaderAuth />
-        </div>
       </div>
     </header>
   )

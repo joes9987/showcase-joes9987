@@ -5,6 +5,12 @@ import { ui } from '@/lib/ui'
 
 export function MemberCard ({ member }: { member: ShowcaseMember }) {
   const avatar = memberAvatarUrl(member.avatar_url, member.github_handle)
+  const links = member.links ?? {}
+  const chips = [
+    links.pmDeploy ? 'Project 1 live' : null,
+    links.chatDeploy ? 'Project 2 live' : null,
+    links.showcaseDeploy ? 'Showcase' : null
+  ].filter(Boolean) as string[]
 
   return (
     <Link
@@ -30,6 +36,18 @@ export function MemberCard ({ member }: { member: ShowcaseMember }) {
         <p className="mt-2 truncate text-xs text-[var(--muted)]">
           {[member.campus, ...(member.skills ?? []).slice(0, 3)].filter(Boolean).join(' · ')}
         </p>
+      )}
+      {chips.length > 0 && (
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {chips.map((label) => (
+            <li
+              key={label}
+              className="rounded-full bg-[var(--accent-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--accent-foreground)]"
+            >
+              {label}
+            </li>
+          ))}
+        </ul>
       )}
     </Link>
   )

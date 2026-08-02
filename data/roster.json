@@ -133,15 +133,22 @@
     "headline": "Phase 1 full-stack submissions",
     "bio": "Shipping production pull requests across Phase 1 projects with public peer review and deployable demos.",
     "skills": ["Next.js", "TypeScript"],
-    "links": { "github": "https://github.com/alaskalam" }
+    "links": {
+      "github": "https://github.com/alaskalam",
+      "chatRepo": "https://github.com/alaskalam/mindful_communicationsapp"
+    }
   },
   {
     "github_handle": "zukhriddingit",
     "display_name": "Zukhriddin",
-    "headline": "Phase 1 full-stack submissions",
-    "bio": "Building and reviewing cohort software in public — focused on TypeScript delivery and clear pull request history.",
-    "skills": ["TypeScript", "Next.js"],
-    "links": { "github": "https://github.com/zukhriddingit" }
+    "headline": "Momentum — Project 1 PM",
+    "bio": "Built Momentum for Project 1 — TypeScript delivery with public pull request history and a live deploy.",
+    "skills": ["TypeScript", "Next.js", "PM"],
+    "links": {
+      "github": "https://github.com/zukhriddingit",
+      "pmRepo": "https://github.com/zukhriddingit/Momentum",
+      "pmDeploy": "https://momentum-bay-two.vercel.app"
+    }
   },
   {
     "github_handle": "jj-javascript",
@@ -213,10 +220,13 @@
   {
     "github_handle": "godwinkamau",
     "display_name": "Godwin Kamau",
-    "headline": "Phase 1 full-stack submissions",
+    "headline": "Project 1 PM — live deploy",
     "bio": "Delivering TypeScript-forward Phase 1 submissions with production deploys and peer feedback.",
-    "skills": ["TypeScript", "full-stack"],
-    "links": { "github": "https://github.com/godwinkamau" }
+    "skills": ["TypeScript", "full-stack", "PM"],
+    "links": {
+      "github": "https://github.com/godwinkamau",
+      "pmDeploy": "https://hult-cohort-pm-project.vercel.app"
+    }
   },
   {
     "github_handle": "solzco1",
@@ -251,18 +261,24 @@
   {
     "github_handle": "divyaprakash04",
     "display_name": "Divya Prakash",
-    "headline": "Phase 1 full-stack submissions",
+    "headline": "OurVelocity — Project 1 PM",
     "bio": "Shipping Next.js cohort projects with an emphasis on clear repositories and working demos.",
-    "skills": ["Next.js", "full-stack"],
-    "links": { "github": "https://github.com/divyaprakash04" }
+    "skills": ["Next.js", "full-stack", "PM"],
+    "links": {
+      "github": "https://github.com/divyaprakash04",
+      "pmDeploy": "https://ourvelocity.vercel.app"
+    }
   },
   {
     "github_handle": "frankgomezdev",
     "display_name": "Frank Gomez",
-    "headline": "Phase 1 React builder",
+    "headline": "Project 1 PM — live deploy",
     "bio": "React-oriented Phase 1 participant — building interfaces and collaborating through peer-reviewed pull requests.",
-    "skills": ["React", "UI"],
-    "links": { "github": "https://github.com/frankgomezdev" }
+    "skills": ["React", "UI", "PM"],
+    "links": {
+      "github": "https://github.com/frankgomezdev",
+      "pmDeploy": "https://pm-frankgomezdev.vercel.app"
+    }
   },
   {
     "github_handle": "studmuffin01",
@@ -275,35 +291,48 @@
   {
     "github_handle": "SuperCUDA",
     "display_name": "SuperCUDA",
-    "headline": "Systems-minded Phase 1 builder",
+    "headline": "Mergeboard — Project 1 PM",
     "bio": "Phase 1 participant with a systems focus — shipping under the cohort's production and review constraints.",
-    "skills": ["systems", "TypeScript"],
-    "links": { "github": "https://github.com/SuperCUDA" }
+    "skills": ["systems", "TypeScript", "PM"],
+    "links": {
+      "github": "https://github.com/SuperCUDA",
+      "pmRepo": "https://github.com/SuperCUDA/mergeboard",
+      "pmDeploy": "https://mergeboard.vercel.app"
+    }
   },
   {
     "github_handle": "paramjeet-singh-neu",
     "display_name": "Paramjeet Singh",
-    "headline": "Phase 1 full-stack submissions",
+    "headline": "Ship Vote — Project 1 PM",
     "bio": "Boston-based builder shipping Next.js work for the Hult Summer Pilot.",
     "campus": "Boston",
-    "skills": ["Next.js", "TypeScript"],
-    "links": { "github": "https://github.com/paramjeet-singh-neu" }
+    "skills": ["Next.js", "TypeScript", "PM"],
+    "links": {
+      "github": "https://github.com/paramjeet-singh-neu",
+      "pmDeploy": "https://ship-vote-rosy.vercel.app"
+    }
   },
   {
     "github_handle": "celiciakitty-creator",
     "display_name": "Celica",
-    "headline": "Design-forward Phase 1 builder",
+    "headline": "Anovia — Project 1 PM",
     "bio": "Bringing design sensibility to Phase 1 product surfaces while shipping under peer review.",
-    "skills": ["design", "UI", "product"],
-    "links": { "github": "https://github.com/celiciakitty-creator" }
+    "skills": ["design", "UI", "product", "PM"],
+    "links": {
+      "github": "https://github.com/celiciakitty-creator",
+      "pmDeploy": "https://anovia.vercel.app"
+    }
   },
   {
     "github_handle": "mitchelldante99-create",
     "display_name": "Dante Mitchell",
-    "headline": "Phase 1 full-stack submissions",
+    "headline": "Project 1 PM — live deploy",
     "bio": "TypeScript-focused Phase 1 builder with public repositories and contest-week delivery.",
-    "skills": ["TypeScript", "full-stack"],
-    "links": { "github": "https://github.com/mitchelldante99-create" }
+    "skills": ["TypeScript", "full-stack", "PM"],
+    "links": {
+      "github": "https://github.com/mitchelldante99-create",
+      "pmDeploy": "https://pm-tool-eight-psi.vercel.app"
+    }
   },
   {
     "github_handle": "jayyyw34",

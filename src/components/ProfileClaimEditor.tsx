@@ -81,6 +81,29 @@ export function ProfileClaimEditor ({
       .map((s) => s.trim())
       .filter(Boolean)
 
+    const JOE_SHOWCASE_REPO = 'https://github.com/joes9987/showcase-joes9987'
+    const JOE_SHOWCASE_DEPLOY = 'https://showcase-joes9987.vercel.app'
+    const isJoe = handle.toLowerCase() === 'joes9987'
+
+    function cleanShowcaseField (
+      value: string | null | undefined,
+      joeDefault: string
+    ): string | null {
+      if (!value) return null
+      if (!isJoe && (value === joeDefault || value.startsWith(joeDefault))) return null
+      return value
+    }
+
+    let showcaseRepo: string | null = null
+    let showcaseDeploy: string | null = null
+    if (alreadyClaimed) {
+      showcaseRepo = cleanShowcaseField(existing?.links?.showcaseRepo, JOE_SHOWCASE_REPO)
+      showcaseDeploy = cleanShowcaseField(existing?.links?.showcaseDeploy, JOE_SHOWCASE_DEPLOY)
+    } else if (isJoe) {
+      showcaseRepo = JOE_SHOWCASE_REPO
+      showcaseDeploy = JOE_SHOWCASE_DEPLOY
+    }
+
     const supabase = createClient()
     const payload = {
       github_handle: handle,
@@ -99,12 +122,8 @@ export function ProfileClaimEditor ({
         pmDeploy: pmDeploy.trim() || null,
         chatRepo: chatRepo.trim() || null,
         chatDeploy: chatDeploy.trim() || null,
-        showcaseRepo: alreadyClaimed
-          ? (existing?.links?.showcaseRepo ?? null)
-          : 'https://github.com/joes9987/showcase-joes9987',
-        showcaseDeploy: alreadyClaimed
-          ? (existing?.links?.showcaseDeploy ?? null)
-          : 'https://showcase-joes9987.vercel.app',
+        showcaseRepo,
+        showcaseDeploy,
         forth: 'https://forth-bice.vercel.app'
       }
     }
