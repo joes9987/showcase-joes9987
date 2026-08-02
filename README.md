@@ -11,8 +11,6 @@ Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaC
 
 PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Edit the JSON from Forth, then bump `updatedAt` with `npm run sync:forth`. UI badge: “Snapshot from Forth · {timestamp}”.
 
-**Reviewer scorecard (/25):** [SCORECARD.md](SCORECARD.md)
-
 **Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
 
 ## What partners see
