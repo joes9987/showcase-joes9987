@@ -4,7 +4,7 @@ import { SITE } from '@/lib/site'
 
 export default function sitemap (): MetadataRoute.Sitemap {
   const base = SITE.marketUrl
-  const staticRoutes = ['', '/people', '/partners', '/for-partners', '/suite', '/login', '/signup'].map((path) => ({
+  const staticRoutes = ['', '/people', '/partners', '/for-partners', '/suite', '/login', '/signup', '/forgot-password'].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date()
   }))

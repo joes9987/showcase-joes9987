@@ -117,12 +117,12 @@ export default async function PersonPage ({ params }: Props) {
           )}
           <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             <LinkRow label="GitHub" href={links.github || `https://github.com/${member.github_handle}`} />
-            {links.pmDeploy && <LinkRow label="EudaPM deploy" href={links.pmDeploy} />}
-            {links.pmRepo && <LinkRow label="EudaPM repo" href={links.pmRepo} />}
-            {links.chatDeploy && <LinkRow label="EudaChat deploy" href={links.chatDeploy} />}
-            {links.chatRepo && <LinkRow label="EudaChat repo" href={links.chatRepo} />}
+            {links.pmDeploy && <LinkRow label="Project 1 deploy" href={links.pmDeploy} />}
+            {links.pmRepo && <LinkRow label="Project 1 repo" href={links.pmRepo} />}
+            {links.chatDeploy && <LinkRow label="Project 2 deploy" href={links.chatDeploy} />}
+            {links.chatRepo && <LinkRow label="Project 2 repo" href={links.chatRepo} />}
             {links.showcaseDeploy && <LinkRow label="Showcase" href={links.showcaseDeploy} />}
-            <LinkRow label="Forth PM" href={links.forth || SITE.forthUrl} />
+            <LinkRow label="Forth" href={links.forth || SITE.forthUrl} />
           </div>
         </div>
       </div>

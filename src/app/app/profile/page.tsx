@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { ProfileClaimEditor } from '@/components/ProfileClaimEditor'
+import { handleFromEmail } from '@/lib/claim-handle'
 import { createClient } from '@/lib/supabase/server'
 import { isSupabaseConfigured } from '@/lib/supabase/config'
 import type { ShowcaseMember } from '@/lib/site'
@@ -36,12 +37,22 @@ export default async function ProfileClaimPage () {
     .maybeSingle()
 
   const email = user.email ?? ''
-  const suggestedHandle =
-    existing?.github_handle ??
-    email.split('@')[0]?.replace(/[^A-Za-z0-9-]/g, '').slice(0, 39) ??
-    'your-handle'
+  const emailHandle = handleFromEmail(email)
+  const suggestedHandle = existing?.github_handle ?? emailHandle ?? 'your-handle'
 
   const alreadyClaimed = Boolean(existing?.github_handle)
+
+  let rosterExists = alreadyClaimed
+  let rosterClaimedByOther = false
+  if (!alreadyClaimed && emailHandle) {
+    const { data: rosterRow } = await supabase
+      .from('showcase_members')
+      .select('github_handle, claimed_by')
+      .ilike('github_handle', emailHandle)
+      .maybeSingle()
+    rosterExists = Boolean(rosterRow)
+    rosterClaimedByOther = Boolean(rosterRow?.claimed_by && rosterRow.claimed_by !== user.id)
+  }
 
   const seeded: ShowcaseMember | null = existing
     ? {
@@ -73,6 +84,8 @@ export default async function ProfileClaimPage () {
         suggestedHandle={suggestedHandle}
         existing={seeded}
         alreadyClaimed={alreadyClaimed}
+        rosterExists={rosterExists}
+        rosterClaimedByOther={rosterClaimedByOther}
       />
     </div>
   )

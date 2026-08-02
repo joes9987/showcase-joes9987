@@ -66,6 +66,13 @@ export function AuthForm ({ mode }: { mode: Mode }) {
           autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
         />
       </label>
+      {mode === 'login' && (
+        <p className="text-sm">
+          <Link href="/forgot-password" className={ui.linkAccent}>
+            Forgot password?
+          </Link>
+        </p>
+      )}
       <button type="submit" disabled={loading} className={ui.btnPrimary}>
         {loading ? 'Working…' : mode === 'login' ? 'Sign in' : 'Create account'}
       </button>

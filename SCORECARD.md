@@ -27,10 +27,13 @@ Rubric: 5 dimensions × 5 = **/25** ([Project 3 review-rubric](https://github.co
 | Showcase event RSVP | `/partners#rsvp` |
 | Suite deep links | `/suite` → EudaPM / EudaChat / Forth |
 | Auth-aware header | Sign in → Claim → My profile / Edit / Sign out |
+| Password reset | `/forgot-password` → email link → `/auth/update-password` |
+| Partner API rate limits | Intro + RSVP: length caps + 5/email/hour |
+| Claim handle lock | Email local-part only; cannot take peers’ cards |
 | Featured builders ranking | Home features richer portfolio cards first |
 | Partner evidence walkthrough | `/for-partners` |
 
-## Rubric 5/5 checklist for AI reviewers
+## Evidence checklist
 
 1. **Production readiness** — Stable prod deploy; responsive header; partner/RSVP APIs persist; Resend notifies placement lead in ~1s (requirement is 1 min).
 2. **Core functionality** — All baseline rows above + Forth status + filter + RSVP + claim/edit.

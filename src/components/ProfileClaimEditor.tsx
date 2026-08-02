@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { handleFromEmail, isValidGithubHandle } from '@/lib/claim-handle'
 import { createClient } from '@/lib/supabase/client'
 import type { ShowcaseMember } from '@/lib/site'
 import { ui } from '@/lib/ui'
@@ -13,6 +14,8 @@ type Props = {
   suggestedHandle: string
   existing: ShowcaseMember | null
   alreadyClaimed: boolean
+  rosterExists: boolean
+  rosterClaimedByOther: boolean
 }
 
 export function ProfileClaimEditor ({
@@ -20,11 +23,16 @@ export function ProfileClaimEditor ({
   email,
   suggestedHandle,
   existing,
-  alreadyClaimed
+  alreadyClaimed,
+  rosterExists,
+  rosterClaimedByOther
 }: Props) {
   const router = useRouter()
-  const [githubHandle, setGithubHandle] = useState(existing?.github_handle ?? suggestedHandle)
-  const [displayName, setDisplayName] = useState(existing?.display_name ?? email.split('@')[0] ?? '')
+  const lockedHandle = alreadyClaimed
+    ? (existing?.github_handle ?? suggestedHandle)
+    : handleFromEmail(email) || suggestedHandle
+
+  const [displayName, setDisplayName] = useState(existing?.display_name ?? lockedHandle)
   const [headline, setHeadline] = useState(existing?.headline ?? '')
   const [bio, setBio] = useState(existing?.bio ?? '')
   const [avatarUrl, setAvatarUrl] = useState(existing?.avatar_url ?? '')
@@ -39,17 +47,33 @@ export function ProfileClaimEditor ({
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
 
+  const canClaim =
+    alreadyClaimed || (rosterExists && !rosterClaimedByOther && isValidGithubHandle(lockedHandle))
+
   async function onSubmit (event: React.FormEvent) {
     event.preventDefault()
     setLoading(true)
     setError(null)
     setSuccess(null)
 
-    const handle = githubHandle.trim().replace(/^@/, '')
-    if (!/^[A-Za-z0-9-]{1,39}$/.test(handle)) {
+    const handle = lockedHandle
+    if (!isValidGithubHandle(handle)) {
       setLoading(false)
-      setError('GitHub handle must be 1–39 letters, numbers, or hyphens.')
+      setError('Your email local-part must look like a GitHub handle (letters, numbers, hyphens).')
       return
+    }
+
+    if (!alreadyClaimed) {
+      if (!rosterExists) {
+        setLoading(false)
+        setError(`No roster card for @${handle}. Sign up with an email whose local-part matches your GitHub handle.`)
+        return
+      }
+      if (rosterClaimedByOther) {
+        setLoading(false)
+        setError(`@${handle} is already claimed.`)
+        return
+      }
     }
 
     const skillList = skills
@@ -75,8 +99,12 @@ export function ProfileClaimEditor ({
         pmDeploy: pmDeploy.trim() || null,
         chatRepo: chatRepo.trim() || null,
         chatDeploy: chatDeploy.trim() || null,
-        showcaseRepo: 'https://github.com/joes9987/showcase-joes9987',
-        showcaseDeploy: 'https://showcase-joes9987.vercel.app',
+        showcaseRepo: alreadyClaimed
+          ? (existing?.links?.showcaseRepo ?? null)
+          : 'https://github.com/joes9987/showcase-joes9987',
+        showcaseDeploy: alreadyClaimed
+          ? (existing?.links?.showcaseDeploy ?? null)
+          : 'https://showcase-joes9987.vercel.app',
         forth: 'https://forth-bice.vercel.app'
       }
     }
@@ -103,7 +131,8 @@ export function ProfileClaimEditor ({
           {alreadyClaimed ? 'Edit your public profile' : 'Claim your public profile'}
         </h1>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Signed in as {email}. Public pages never show your email.
+          Signed in as {email}. Public pages never show your email. Claimable handle is the email local-part
+          ({lockedHandle || '—'}) so peers cannot take another builder’s card.
         </p>
         {alreadyClaimed && existing?.github_handle && (
           <p className="mt-2 text-sm">
@@ -112,10 +141,18 @@ export function ProfileClaimEditor ({
             </Link>
           </p>
         )}
+        {!alreadyClaimed && !canClaim && (
+          <p className={`${ui.alertWarning} mt-3`}>
+            {!rosterExists
+              ? `No seeded roster row for @${lockedHandle}. Use an account whose email local-part matches your GitHub handle, or ask staff.`
+              : `@${lockedHandle} is already claimed by someone else.`}
+          </p>
+        )}
       </div>
       <label className={ui.label}>
         GitHub handle
-        <input required className={ui.field} value={githubHandle} onChange={(e) => setGithubHandle(e.target.value)} />
+        <input required className={ui.field} value={lockedHandle} readOnly disabled />
+        <span className="mt-1 block text-xs font-normal text-[var(--muted)]">Locked to your account email</span>
       </label>
       <label className={ui.label}>
         Display name
@@ -144,7 +181,7 @@ export function ProfileClaimEditor ({
           className={ui.field}
           value={skills}
           onChange={(e) => setSkills(e.target.value)}
-          placeholder="Next.js, Supabase, Forth, EudaPM"
+          placeholder="Next.js, Forth, product"
         />
         <span className="mt-1 block text-xs font-normal text-[var(--muted)]">Comma-separated</span>
       </label>
@@ -153,26 +190,26 @@ export function ProfileClaimEditor ({
         <input className={ui.field} value={avatarUrl} onChange={(e) => setAvatarUrl(e.target.value)} placeholder="Leave blank to use GitHub avatar" />
       </label>
       <label className={ui.label}>
-        EudaPM deploy URL
+        Project 1 deploy URL
         <input className={ui.field} value={pmDeploy} onChange={(e) => setPmDeploy(e.target.value)} />
       </label>
       <label className={ui.label}>
-        EudaPM repo URL
+        Project 1 repo URL
         <input className={ui.field} value={pmRepo} onChange={(e) => setPmRepo(e.target.value)} />
       </label>
       <label className={ui.label}>
-        EudaChat deploy URL
+        Project 2 deploy URL
         <input className={ui.field} value={chatDeploy} onChange={(e) => setChatDeploy(e.target.value)} />
       </label>
       <label className={ui.label}>
-        EudaChat repo URL
+        Project 2 repo URL
         <input className={ui.field} value={chatRepo} onChange={(e) => setChatRepo(e.target.value)} />
       </label>
       <label className="flex items-center gap-2 text-sm text-[var(--foreground)]">
         <input type="checkbox" checked={optOut} onChange={(e) => setOptOut(e.target.checked)} />
         Opt out of public profile (show private placeholder)
       </label>
-      <button type="submit" disabled={loading} className={ui.btnPrimary}>
+      <button type="submit" disabled={loading || !canClaim} className={ui.btnPrimary}>
         {loading ? 'Saving…' : 'Save profile'}
       </button>
       {success && <p className={ui.alertSuccess}>{success}</p>}

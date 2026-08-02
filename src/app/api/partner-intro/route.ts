@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import { sendPlacementEmail } from '@/lib/notify'
+import { checkPartnerRateLimit, type RateLimitClient } from '@/lib/partner-guard'
 import { parsePartnerIntro } from '@/lib/partner-intro'
 
 function adminClient () {
@@ -22,6 +23,11 @@ export async function POST (request: Request) {
   const supabase = adminClient()
   if (!supabase) {
     return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+  }
+
+  const rate = await checkPartnerRateLimit(supabase as unknown as RateLimitClient, 'partner_requests', email)
+  if (!rate.ok) {
+    return NextResponse.json({ error: rate.error }, { status: rate.status })
   }
 
   const { error } = await supabase.from('partner_requests').insert({

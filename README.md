@@ -43,12 +43,17 @@ Use the same auth project URL/anon key as EudaPM / EudaChat. Public pages work w
 
 ### Schema + seed
 
-1. Apply `supabase/migrations/001_eudamarket.sql` and `002_showcase_partner_fields.sql` to project `vidprovlxevofniwyhgs` (via linked `pm-joes9987` CLI: `supabase db query --linked -f …`).
+1. Apply `supabase/migrations/001_eudamarket.sql`, `002_showcase_partner_fields.sql`, and `003_claim_handle_lock.sql` to project `vidprovlxevofniwyhgs` (via linked `pm-joes9987` CLI: `supabase db query --linked -f …`).
 2. Seed roster: set `SUPABASE_SERVICE_ROLE_KEY` and run `npm run seed:roster`. Seed fills bios/skills/links from [`data/roster.json`](data/roster.json); claimed customizations are preserved.
+3. In Supabase Auth → URL configuration, allow redirect URLs:
+   - `https://showcase-joes9987.vercel.app/auth/callback`
+   - `http://localhost:3000/auth/callback`
 
 ## Claim your profile
 
 Sign in with the same email as EudaPM / EudaChat → **Claim profile** (header becomes **My profile / Edit / Sign out** after claim) → enrich bio, campus, skills, avatar, and deploy links. Cookies are per-host (no silent SSO across `*.vercel.app`).
+
+**Claim rule:** the GitHub handle is locked to your email local-part (must match a seeded roster row). Forgot password: `/forgot-password` (shared suite password).
 
 ## Sample profiles
 

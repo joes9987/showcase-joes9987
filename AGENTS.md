@@ -13,7 +13,7 @@ Public showcase for the Hult Summer Pilot (Phase 1 Project 3).
 | Route | Auth |
 |-------|------|
 | `/`, `/people`, `/people/[handle]`, `/partners`, `/suite` | Public |
-| `/login`, `/signup`, `/app/profile` | Claim/edit own showcase card |
+| `/login`, `/signup`, `/forgot-password`, `/auth/*`, `/app/profile` | Claim/edit own showcase card; password reset |
 
 Never expose emails on public pages. Opt-out members render a private placeholder.
 
@@ -27,7 +27,9 @@ Never expose emails on public pages. Opt-out members render a private placeholde
 - `data/roster.json` — seed + offline fallback (+ merge enrichment when DB fields are thin)
 - `data/forth-status.json` — manual daily Forth PM snapshot (no public Forth API; `npm run sync:forth` only bumps `updatedAt`)
 
-Migrations: `supabase/migrations/001_eudamarket.sql`, `002_showcase_partner_fields.sql`. Apply via linked **pm-joes9987** CLI (`supabase db query --linked -f …`).
+Migrations: `001_eudamarket.sql`, `002_showcase_partner_fields.sql`, `003_claim_handle_lock.sql`. Apply via linked **pm-joes9987** CLI (`supabase db query --linked -f …`).
+
+**Claim:** `github_handle` is locked to the signed-in email local-part for new claims; existing owners can still edit. Partner intro/RSVP APIs enforce length caps + per-email/global hourly rate limits.
 
 ## Commands
 
@@ -59,3 +61,5 @@ npm run sync:forth           # bump snapshot timestamp after editing forth-statu
 - Minimal diffs; do not alter PM/Chat tables
 - Public pages must work with auth unset
 - Header auth states: signed out → Sign in; signed in unclaimed → Claim; claimed → My profile / Edit / Sign out
+- Auth redirect allowlist must include `/auth/callback` on each host
+- Profile portfolio labels are neutral (Project 1 / Project 2), not Euda-branded peer products

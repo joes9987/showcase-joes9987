@@ -1,6 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import { sendPlacementEmail } from '@/lib/notify'
+import { checkPartnerRateLimit, type RateLimitClient } from '@/lib/partner-guard'
+import { parseShowcaseRsvp } from '@/lib/partner-intro'
 
 function adminClient () {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -10,26 +12,22 @@ function adminClient () {
 }
 
 export async function POST (request: Request) {
-  const body = (await request.json().catch(() => ({}))) as {
-    name?: string
-    email?: string
-    company?: string
+  const body = await request.json().catch(() => ({}))
+  const parsed = parseShowcaseRsvp(body)
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: 400 })
   }
 
-  const name = body.name?.trim() ?? ''
-  const email = body.email?.trim() ?? ''
-  const company = body.company?.trim() || null
-
-  if (!name || !email) {
-    return NextResponse.json({ error: 'name and email are required' }, { status: 400 })
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ error: 'Invalid email' }, { status: 400 })
-  }
+  const { name, email, company } = parsed.data
 
   const supabase = adminClient()
   if (!supabase) {
     return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+  }
+
+  const rate = await checkPartnerRateLimit(supabase as unknown as RateLimitClient, 'showcase_rsvps', email)
+  if (!rate.ok) {
+    return NextResponse.json({ error: rate.error }, { status: rate.status })
   }
 
   const { error } = await supabase.from('showcase_rsvps').insert({ name, email, company })
