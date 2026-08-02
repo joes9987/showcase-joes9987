@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ForthStatusPanel } from '@/components/ForthStatusPanel'
+import { GithubActivity } from '@/components/GithubActivity'
 import { memberAvatarUrl } from '@/lib/avatars'
 import { loadForthStatus } from '@/lib/forth-status'
+import { fetchGithubActivity } from '@/lib/github-activity'
 import { getMember, listPublicMembers } from '@/lib/members'
 import { SITE } from '@/lib/site'
 import { ui } from '@/lib/ui'
@@ -67,6 +69,7 @@ export default async function PersonPage ({ params }: Props) {
 
   const links = member.links ?? {}
   const avatar = memberAvatarUrl(member.avatar_url, member.github_handle)
+  const activity = await fetchGithubActivity(member.github_handle, 5)
 
   return (
     <div className={ui.pageMain}>
@@ -130,6 +133,8 @@ export default async function PersonPage ({ params }: Props) {
       <div className="mt-8">
         <ForthStatusPanel status={forth} variant="compact" highlightProjects={owned} />
       </div>
+
+      <GithubActivity items={activity} />
     </div>
   )
 }

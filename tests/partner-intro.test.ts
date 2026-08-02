@@ -90,6 +90,26 @@ describe('wouldRateLimit', () => {
     const result = wouldRateLimit({ emailCount: 1, globalCount: 60 })
     expect(result.limited).toBe(true)
   })
+
+  it('allows one under each ceiling', () => {
+    expect(
+      wouldRateLimit({
+        emailCount: PARTNER_LIMITS.perEmailPerHour - 1,
+        globalCount: PARTNER_LIMITS.globalPerHour - 1
+      }).limited
+    ).toBe(false)
+  })
+
+  it('prefers the email reason when both would trip', () => {
+    const result = wouldRateLimit({
+      emailCount: PARTNER_LIMITS.perEmailPerHour,
+      globalCount: PARTNER_LIMITS.globalPerHour
+    })
+    expect(result.limited).toBe(true)
+    if (result.limited) {
+      expect(result.reason).toMatch(/this email/i)
+    }
+  })
 })
 
 describe('filterMembers', () => {

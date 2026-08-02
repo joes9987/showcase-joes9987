@@ -1,36 +1,36 @@
 {
   "source": "https://forth-bice.vercel.app",
   "sourceLabel": "Forth — winning cohort PM platform",
-  "updatedAt": "2026-07-30T23:19:44.777Z",
-  "summary": "Forth is the Summer Pilot Project 1 winner. Cohort members track tickets, pace, and proof of progress in signed-in guild workspaces. EudaMarket shows a manual snapshot of that status for partner pages (updated at least daily).",
+  "updatedAt": "2026-08-02T19:55:00.000Z",
+  "summary": "Forth is the Summer Pilot Project 1 winner. Cohort members track tickets and pace in signed-in guild workspaces. EudaMarket shows a manual dated snapshot of that status for partner pages (operators refresh from Forth; not a live API scrape).",
   "projects": [
     {
       "id": "forth-core",
       "title": "Forth cloud sync & guild workspace",
       "status": "live",
       "owner": "CodingWCal",
-      "note": "Conflict-safe sync, offline/retry UX contributions in flight; production at forth-bice.vercel.app"
+      "note": "Production at forth-bice.vercel.app; cohort continues to file tickets against the shared backlog"
     },
     {
       "id": "phase-1-pm",
       "title": "Phase 1 — Project management",
       "status": "operating",
       "owner": "cohort",
-      "note": "Winning PM platform operates for the full cohort; peers ship tickets against the Forth backlog"
+      "note": "Winning PM platform operates for the full cohort; peer PM builds (EudaPM, Rally, …) remain reviewable"
     },
     {
       "id": "phase-1-comms",
       "title": "Phase 1 — Internal communications",
       "status": "review",
       "owner": "cohort",
-      "note": "Comms platforms shipped (EudaChat, Rally, Banter, teamwrk, …); peer review + private votes"
+      "note": "Comms platforms in peer review (EudaChat, Rally, Banter, teamwrk, …); votes tallied from GitHub review issues"
     },
     {
       "id": "phase-1-showcase",
       "title": "Phase 1 — Public showcase",
-      "status": "building",
+      "status": "review",
       "owner": "cohort",
-      "note": "Partner-facing showcase week (Jul 30 – Aug 5); EudaMarket and peer builds compete for vote"
+      "note": "Partner-facing showcase review week (through Aug 5); EudaMarket and peer showcases compete for Vote: up"
     }
   ],
   "howToRefresh": "Manual snapshot: edit projects/summary from Forth / staff notes, then bump updatedAt (or run npm run sync:forth to bump the timestamp only)."

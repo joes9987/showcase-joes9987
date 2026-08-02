@@ -31,6 +31,10 @@ Migrations: `001_eudamarket.sql`, `002_showcase_partner_fields.sql`, `003_claim_
 
 **Claim:** `github_handle` is locked to the signed-in email local-part for new claims; existing owners can still edit. Partner intro/RSVP APIs enforce length caps + per-email/global hourly rate limits.
 
+## Reviewer smoke
+
+Public checklist: [docs/REVIEWER.md](docs/REVIEWER.md). Profile pages may show cached public GitHub activity (`src/lib/github-activity.ts`).
+
 ## Commands
 
 ```bash

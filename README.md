@@ -13,6 +13,8 @@ PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat depl
 
 **Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
 
+**Peer reviewers:** See [docs/REVIEWER.md](docs/REVIEWER.md) for a public smoke checklist (no self-score).
+
 ## What partners see
 
 - Homepage narrative (≥200 words) focused on public proof of work — not internal infrastructure details

@@ -64,8 +64,8 @@ export default async function HomePage () {
           EudaMarket is part of a connected suite with EudaPM and EudaChat. Participants use one account across those surfaces, so
           the builder you meet here is the same person managing work and collaborating with peers day to day. You do not need a
           separate login to evaluate them: open a profile, follow links to repositories and production deploys, and check the Forth
-          status strip for what the cohort is shipping this week. That status is refreshed from the live Forth platform for partner
-          pages—so the narrative stays tied to real project progress, not marketing copy.
+          status strip for what the cohort is shipping this week. That strip is a dated manual snapshot from Forth (not a live scrape),
+          refreshed by operators so partner pages stay tied to real project progress rather than marketing copy.
         </p>
         <p>
           If you are hiring for internships, associate engineering, or product roles that reward builders who can operate with
