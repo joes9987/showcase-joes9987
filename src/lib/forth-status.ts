@@ -9,12 +9,20 @@ export type ForthProject = {
   note: string
 }
 
+export type ForthLiveFile = {
+  lastCheckedAt: string
+  reachable: boolean
+  httpStatus: number | null
+}
+
 export type ForthStatus = {
   source: string
   sourceLabel: string
   updatedAt: string
   summary: string
   projects: ForthProject[]
+  howToRefresh?: string
+  live?: ForthLiveFile
 }
 
 export async function loadForthStatus (): Promise<ForthStatus> {

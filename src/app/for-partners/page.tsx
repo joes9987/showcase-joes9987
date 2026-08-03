@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 const CHECKS = [
   {
     title: 'Production readiness',
-    body: 'Public HTTPS pages load without signing in. Browse on a phone; the header and people grid stay usable.',
-    href: '/',
-    linkLabel: 'Open homepage'
+    body: 'Public HTTPS pages load without signing in. Browse on a phone; the header and people grid stay usable. Ops JSON at /api/health reports Forth reachability and whether partner writes are configured.',
+    href: '/api/health',
+    linkLabel: 'Open /api/health'
   },
   {
     title: 'People you can inspect',
-    body: 'Every enrolled builder has a page. Filter by skill or project, then open GitHub and live deploys. Opted-out profiles show a private placeholder.',
+    body: 'Every enrolled builder has a page. The directory shows how many public builders have a verified live Project 1 or 2 deploy — we do not invent chips for missing URLs. Opted-out profiles show a private placeholder.',
     href: '/people',
     linkLabel: 'Browse people'
   },
@@ -30,13 +30,13 @@ const CHECKS = [
   },
   {
     title: 'Forth project status',
-    body: 'A dated snapshot from the cohort PM platform (Forth) sits on the home page and on profiles, with a direct link into Forth.',
+    body: 'Home and profiles show a live Forth reachability probe plus curated program rows. Forth has no public ticket API, so we do not claim a ticket scrape.',
     href: '/#forth-status',
-    linkLabel: 'See Forth snapshot'
+    linkLabel: 'See Forth status'
   },
   {
     title: 'Hire path + privacy',
-    body: 'Partners page explains how to request an introduction (routed to program / placement staff) and RSVP for the end-of-pilot showcase. Privacy opt-out is demonstrable.',
+    body: 'Partners page explains how to request an introduction (routed to program / placement staff) and RSVP for the end-of-pilot showcase. Fees are not published on the site. Privacy opt-out is demonstrable.',
     href: '/partners',
     linkLabel: 'Partners + intro'
   },

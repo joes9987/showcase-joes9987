@@ -5,7 +5,7 @@ export async function sendPlacementEmail (opts: {
   text: string
 }): Promise<{ emailed: boolean; reason?: string }> {
   const apiKey = process.env.RESEND_API_KEY
-  const to = process.env.PLACEMENT_LEAD_EMAIL ?? SITE.placementEmail
+  const to = (process.env.PLACEMENT_LEAD_EMAIL || SITE.placementEmail).trim()
   if (!apiKey) return { emailed: false, reason: 'RESEND_API_KEY unset' }
   if (!to) return { emailed: false, reason: 'PLACEMENT_LEAD_EMAIL unset' }
 

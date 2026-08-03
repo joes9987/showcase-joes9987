@@ -9,12 +9,13 @@ Public pages need no login. Score against the Project 3 rubric from the live sit
 | Area | Where |
 |------|-------|
 | Hireable narrative (≥200 words) | `/` |
-| Forth status strip | `/` `#forth-status` — badge reads **Snapshot from Forth** (manual dated JSON, not a live scrape) |
-| People directory + filter | `/people` |
+| Forth status strip | `/` `#forth-status` — **Forth reachable · checked …** (live probe) + **Program snapshot** rows (curated; no public ticket API) |
+| Ops health | `/api/health` — `app: "eudamarket"`, Forth probe + `partnerWritesConfigured` |
+| People directory + coverage strip | `/people` — “N of M … verified live … deploy” |
 | Sample profiles | `/people/joes9987`, `/people/CodingWCal`, `/people/nikjain15` |
-| Recent GitHub activity | Profile pages (public events API; may be empty if rate-limited) |
+| Recent GitHub activity | Profile pages (empty state if rate-limited / no public events) |
 | Opt-out placeholder | `/people/rebekah-dev` |
-| Partners / fee / intro / RSVP | `/partners` |
+| Partners / intro / RSVP | `/partners` (no public fee % or placement email) |
 | Partner evidence walkthrough | `/for-partners` |
 | Suite deep links | `/suite` |
 | Password reset | `/forgot-password` (shared suite account with EudaPM / EudaChat) |
@@ -25,5 +26,6 @@ Signup/login uses the shared suite Supabase project. New claims require the GitH
 
 ## Operator notes
 
-- Forth snapshot: `data/forth-status.json` · `npm run sync:forth` checks Forth reachability then bumps `updatedAt` (run during review week so the strip does not go silently stale)
-- Tests: `npm test` (partner parse/rate-limit, claim-handle, Forth JSON shape, GitHub event mapping)
+- Forth: live reachability via `npm run sync:forth` + GitHub Actions `sync-forth` cron (every 12h). Narrative `projects[]` still curated — Forth has no public ticket API.
+- Partner APIs require `SUPABASE_SERVICE_ROLE_KEY` in production (no anon-key write fallback).
+- Tests: `npm test` (vitest) · `npm run test:e2e` (Playwright public smoke after build)

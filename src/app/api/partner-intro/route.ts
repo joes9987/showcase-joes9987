@@ -1,15 +1,8 @@
-import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import { sendPlacementEmail } from '@/lib/notify'
 import { checkPartnerRateLimit, type RateLimitClient } from '@/lib/partner-guard'
 import { parsePartnerIntro } from '@/lib/partner-intro'
-
-function adminClient () {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  if (!url || !key) return null
-  return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } })
-}
+import { createServiceClient } from '@/lib/supabase/admin'
 
 export async function POST (request: Request) {
   const body = await request.json().catch(() => ({}))
@@ -20,9 +13,12 @@ export async function POST (request: Request) {
 
   const { company, contact_name, email, student_handles, message } = parsed.data
 
-  const supabase = adminClient()
+  const supabase = createServiceClient()
   if (!supabase) {
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    return NextResponse.json(
+      { error: 'Partner writes require SUPABASE_SERVICE_ROLE_KEY' },
+      { status: 503 }
+    )
   }
 
   const rate = await checkPartnerRateLimit(supabase as unknown as RateLimitClient, 'partner_requests', email)

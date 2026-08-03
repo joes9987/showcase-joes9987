@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ForthStatusPanel } from '@/components/ForthStatusPanel'
 import { MemberCard } from '@/components/MemberCard'
+import { probeForth } from '@/lib/forth-live'
 import { loadForthStatus } from '@/lib/forth-status'
 import { listPublicMembers } from '@/lib/members'
 import { SITE } from '@/lib/site'
@@ -20,6 +21,7 @@ function featuredScore (member: Awaited<ReturnType<typeof listPublicMembers>>[nu
 
 export default async function HomePage () {
   const [members, forth] = await Promise.all([listPublicMembers(), loadForthStatus()])
+  const live = await probeForth(forth.source)
   const featured = [...members].sort((a, b) => featuredScore(b) - featuredScore(a)).slice(0, 6)
 
   return (
@@ -64,8 +66,8 @@ export default async function HomePage () {
           EudaMarket is part of a connected suite with EudaPM and EudaChat. Participants use one account across those surfaces, so
           the builder you meet here is the same person managing work and collaborating with peers day to day. You do not need a
           separate login to evaluate them: open a profile, follow links to repositories and production deploys, and check the Forth
-          status strip for what the cohort is shipping this week. That strip is a dated manual snapshot from Forth (not a live scrape),
-          refreshed by operators so partner pages stay tied to real project progress rather than marketing copy.
+          status strip for what the cohort is shipping this week. That strip probes Forth live for reachability (scheduled +
+          on-request) and shows curated program rows — Forth has no public ticket API, so we do not invent a scrape.
         </p>
         <p>
           If you are hiring for internships, associate engineering, or product roles that reward builders who can operate with
@@ -77,7 +79,7 @@ export default async function HomePage () {
       </section>
 
       <div id="forth-status" className="mt-12 scroll-mt-24">
-        <ForthStatusPanel status={forth} />
+        <ForthStatusPanel status={forth} live={live} />
       </div>
 
       <section className="mt-12">

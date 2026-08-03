@@ -48,3 +48,8 @@ next-env.d.ts
 .tmp-*.html
 .tmp-*.png
 
+
+test-results/
+playwright-report/
+supabase/.temp/
+

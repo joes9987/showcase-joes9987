@@ -1,23 +1,73 @@
 import { SITE } from '@/lib/site'
+import {
+  formatProbeCheckedAt,
+  isNarrativeFresh,
+  type ForthLiveProbe
+} from '@/lib/forth-live'
 import type { ForthProject, ForthStatus } from '@/lib/forth-status'
 import { ui } from '@/lib/ui'
 
 type Props = {
   status: ForthStatus
+  live?: ForthLiveProbe | null
   variant?: 'full' | 'compact'
   /** When compact: projects owned by the profile being viewed */
   highlightProjects?: ForthProject[]
 }
 
-export function ForthStatusPanel ({
-  status,
-  variant = 'full',
-  highlightProjects
-}: Props) {
+function LiveBadge ({ live, status }: { live?: ForthLiveProbe | null; status: ForthStatus }) {
+  const probe = live ?? (status.live
+    ? {
+        ok: status.live.reachable,
+        status: status.live.httpStatus,
+        checkedAt: status.live.lastCheckedAt
+      }
+    : null)
+
+  if (!probe) {
+    return (
+      <p className="mt-3 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
+        Forth probe pending
+      </p>
+    )
+  }
+
+  const when = formatProbeCheckedAt(probe.checkedAt)
+  if (probe.ok) {
+    return (
+      <p className="mt-3 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
+        Forth reachable · checked {when}
+      </p>
+    )
+  }
+
+  return (
+    <p className="mt-3 inline-flex rounded-full bg-red-500/15 px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300">
+      Forth unreachable · last checked {when}
+    </p>
+  )
+}
+
+function NarrativeLabel ({ status }: { status: ForthStatus }) {
   const updated = new Date(status.updatedAt).toLocaleString(undefined, {
     dateStyle: 'medium',
     timeStyle: 'short'
   })
+  const stale = !isNarrativeFresh(status.updatedAt)
+  return (
+    <p className="mt-2 text-xs text-[var(--muted)]">
+      Program snapshot · {updated}
+      {stale ? ' · refresh recommended (narrative older than 7 days)' : ''}
+    </p>
+  )
+}
+
+export function ForthStatusPanel ({
+  status,
+  live,
+  variant = 'full',
+  highlightProjects
+}: Props) {
   const sourceHost = (() => {
     try {
       return new URL(status.source).host
@@ -35,9 +85,8 @@ export function ForthStatusPanel ({
             <p className={ui.eyebrow}>PM platform status</p>
             <h2 className="font-display mt-1 text-lg font-semibold">{status.sourceLabel}</h2>
             <p className="mt-2 line-clamp-2 text-sm text-[var(--muted-foreground)]">{status.summary}</p>
-            <p className="mt-3 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
-              Snapshot from Forth · {updated}
-            </p>
+            <LiveBadge live={live} status={status} />
+            <NarrativeLabel status={status} />
             {owned.length > 0 ? (
               <ul className="mt-4 space-y-2">
                 {owned.map((project) => (
@@ -70,7 +119,7 @@ export function ForthStatusPanel ({
           </a>
         </div>
         <p className="mt-4 text-xs text-[var(--muted)]">
-          Source: Forth ({sourceHost}) · updated {updated}
+          Source: Forth ({sourceHost}) · live reachability probe + curated program rows (no public ticket API)
         </p>
       </section>
     )
@@ -83,9 +132,8 @@ export function ForthStatusPanel ({
           <p className={ui.eyebrow}>PM platform status</p>
           <h2 className="font-display mt-1 text-xl font-semibold">{status.sourceLabel}</h2>
           <p className="mt-2 max-w-2xl text-sm text-[var(--muted-foreground)]">{status.summary}</p>
-          <p className="mt-3 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
-            Snapshot from Forth · {updated}
-          </p>
+          <LiveBadge live={live} status={status} />
+          <NarrativeLabel status={status} />
         </div>
         <a href={SITE.forthUrl} target="_blank" rel="noreferrer" className={ui.btnSecondary}>
           Open Forth
@@ -113,7 +161,7 @@ export function ForthStatusPanel ({
         ))}
       </ul>
       <p className="mt-4 text-xs text-[var(--muted)]">
-        Source: Forth ({sourceHost}) · updated {updated}
+        Source: Forth ({sourceHost}) · live reachability probe + curated program rows (no public ticket API)
       </p>
     </section>
   )

@@ -20,3 +20,7 @@ jobs:
       # No credentials configured here on purpose: public pages must build
       # and render without Supabase or Resend env vars.
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+        env:
+          CI: true

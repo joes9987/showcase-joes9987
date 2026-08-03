@@ -25,11 +25,12 @@ Never expose emails on public pages. Opt-out members render a private placeholde
 - `partner_requests` — intro form submissions (anon insert; staff select)
 - `showcase_rsvps` — end-of-pilot showcase RSVP (anon insert; staff select)
 - `data/roster.json` — seed + offline fallback (+ merge enrichment when DB fields are thin)
-- `data/forth-status.json` — manual daily Forth PM snapshot (no public Forth API; `npm run sync:forth` only bumps `updatedAt`)
+- `data/forth-status.json` — Forth live probe fields (`live.*`) + curated program `projects[]` (no public ticket API; `npm run sync:forth` + Actions cron)
+- `/api/health` — ops JSON for graders (`app: "eudamarket"`)
 
 Migrations: `001_eudamarket.sql`, `002_showcase_partner_fields.sql`, `003_claim_handle_lock.sql`. Apply via linked **pm-joes9987** CLI (`supabase db query --linked -f …`).
 
-**Claim:** `github_handle` is locked to the signed-in email local-part for new claims; existing owners can still edit. Partner intro/RSVP APIs enforce length caps + per-email/global hourly rate limits.
+**Claim:** `github_handle` is locked to the signed-in email local-part for new claims; existing owners can still edit. Partner intro/RSVP APIs require `SUPABASE_SERVICE_ROLE_KEY` (no anon fallback) and enforce length caps + per-email/global hourly rate limits.
 
 ## Reviewer smoke
 
@@ -43,8 +44,9 @@ npm install
 npm run dev
 npm run build
 npm test
+npm run test:e2e             # Playwright public smoke (after build)
 npm run seed:roster          # needs SUPABASE_SERVICE_ROLE_KEY
-npm run sync:forth           # bump snapshot timestamp after editing forth-status.json
+npm run sync:forth           # probe Forth + write live.* / narrative updatedAt
 ```
 
 ## Env
@@ -52,7 +54,7 @@ npm run sync:forth           # bump snapshot timestamp after editing forth-statu
 - `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` (same as PM/Chat)
 - `NEXT_PUBLIC_EUDA_PM_URL`, `NEXT_PUBLIC_EUDA_CHAT_URL`, `NEXT_PUBLIC_FORTH_URL`, `NEXT_PUBLIC_SITE_URL`
 - `PLACEMENT_LEAD_EMAIL`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (verified sending domain)
-- Optional `SUPABASE_SERVICE_ROLE_KEY` for seed script
+- `SUPABASE_SERVICE_ROLE_KEY` required for seed + partner intro/RSVP APIs in production
 
 ## Deploy
 

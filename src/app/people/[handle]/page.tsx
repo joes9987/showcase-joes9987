@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { ForthStatusPanel } from '@/components/ForthStatusPanel'
 import { GithubActivity } from '@/components/GithubActivity'
 import { memberAvatarUrl } from '@/lib/avatars'
+import { probeForth } from '@/lib/forth-live'
 import { loadForthStatus } from '@/lib/forth-status'
 import { fetchGithubActivity } from '@/lib/github-activity'
 import { getMember, listPublicMembers } from '@/lib/members'
@@ -46,6 +47,7 @@ export default async function PersonPage ({ params }: Props) {
   const [member, forth] = await Promise.all([getMember(handle), loadForthStatus()])
   if (!member) notFound()
 
+  const live = await probeForth(forth.source)
   const owned = forth.projects.filter(
     (p) => p.owner.toLowerCase() === member.github_handle.toLowerCase()
   )
@@ -131,7 +133,7 @@ export default async function PersonPage ({ params }: Props) {
       </div>
 
       <div className="mt-8">
-        <ForthStatusPanel status={forth} variant="compact" highlightProjects={owned} />
+        <ForthStatusPanel status={forth} live={live} variant="compact" highlightProjects={owned} />
       </div>
 
       <GithubActivity items={activity} />

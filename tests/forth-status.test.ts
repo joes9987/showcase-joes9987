@@ -25,4 +25,11 @@ describe('forth-status.json', () => {
   it('has a parseable updatedAt', () => {
     expect(Number.isNaN(Date.parse(status.updatedAt))).toBe(false)
   })
+
+  it('persists live probe fields from sync:forth', () => {
+    expect(status.live).toBeTruthy()
+    expect(typeof status.live?.reachable).toBe('boolean')
+    expect(Number.isNaN(Date.parse(status.live!.lastCheckedAt))).toBe(false)
+  })
 })
+

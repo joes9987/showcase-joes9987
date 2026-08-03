@@ -2,14 +2,16 @@
 
 Partner-facing public showcase for the **Hult Summer Pilot 2026**.
 
-Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaChat**, read **Forth** PM status from a real daily snapshot, and request a warm intro.
+Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaChat**, check **Forth** live reachability plus a curated program snapshot, and request a warm intro.
 
 **Production:** https://showcase-joes9987.vercel.app  
 **Repo:** https://github.com/joes9987/showcase-joes9987
 
 ## Eligibility / PM status
 
-PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Edit project notes from Forth when status changes, then run `npm run sync:forth` (verifies Forth is reachable, then bumps `updatedAt`). UI badge: “Snapshot from Forth · {timestamp}”.
+Forth integration is hybrid: a **live reachability probe** (on request + `npm run sync:forth` + GitHub Actions cron every 12h) plus **curated program rows** in [`data/forth-status.json`](data/forth-status.json). Forth has no public ticket API, so we do not invent a scrape. UI badges: “Forth reachable · checked …” and “Program snapshot · …”.
+
+Ops: https://showcase-joes9987.vercel.app/api/health
 
 **Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
 
@@ -66,8 +68,11 @@ Sign in with the same email as EudaPM / EudaChat → **Claim profile** (header b
 Next.js 16 · React 19 · Tailwind 4 · Supabase Auth SSR · next-themes
 
 ```bash
-npm test   # vitest
+npm test        # vitest
 npm run build
+npm run test:e2e  # Playwright public smoke (expects a prior build)
 ```
+
+Partner write APIs require `SUPABASE_SERVICE_ROLE_KEY` (no anon-key fallback).
 
 See [AGENTS.md](AGENTS.md) for agent conventions.
