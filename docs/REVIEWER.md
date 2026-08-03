@@ -25,5 +25,5 @@ Signup/login uses the shared suite Supabase project. New claims require the GitH
 
 ## Operator notes
 
-- Forth snapshot: `data/forth-status.json` · `npm run sync:forth` bumps `updatedAt` only
+- Forth snapshot: `data/forth-status.json` · `npm run sync:forth` checks Forth reachability then bumps `updatedAt` (run during review week so the strip does not go silently stale)
 - Tests: `npm test` (partner parse/rate-limit, claim-handle, Forth JSON shape, GitHub event mapping)

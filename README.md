@@ -9,7 +9,7 @@ Inspect builders on GitHub, follow portfolio deploys into **EudaPM** and **EudaC
 
 ## Eligibility / PM status
 
-PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Edit the JSON from Forth, then bump `updatedAt` with `npm run sync:forth`. UI badge: “Snapshot from Forth · {timestamp}”.
+PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat deploys. See [`data/forth-status.json`](data/forth-status.json) (source: https://forth-bice.vercel.app). Edit project notes from Forth when status changes, then run `npm run sync:forth` (verifies Forth is reachable, then bumps `updatedAt`). UI badge: “Snapshot from Forth · {timestamp}”.
 
 **Privacy demo:** https://showcase-joes9987.vercel.app/people/rebekah-dev
 

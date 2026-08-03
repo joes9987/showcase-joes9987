@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { handleFromEmail, isValidGithubHandle } from '@/lib/claim-handle'
+import { handleFromEmail, isValidGithubHandle, normalizeGithubHandle } from '@/lib/claim-handle'
 import { createClient } from '@/lib/supabase/client'
 import type { ShowcaseMember } from '@/lib/site'
 import { ui } from '@/lib/ui'
@@ -28,9 +28,11 @@ export function ProfileClaimEditor ({
   rosterClaimedByOther
 }: Props) {
   const router = useRouter()
-  const lockedHandle = alreadyClaimed
-    ? (existing?.github_handle ?? suggestedHandle)
-    : handleFromEmail(email) || suggestedHandle
+  const lockedHandle = normalizeGithubHandle(
+    alreadyClaimed
+      ? (existing?.github_handle ?? suggestedHandle)
+      : handleFromEmail(email) || suggestedHandle
+  )
 
   const [displayName, setDisplayName] = useState(existing?.display_name ?? lockedHandle)
   const [headline, setHeadline] = useState(existing?.headline ?? '')
@@ -56,7 +58,7 @@ export function ProfileClaimEditor ({
     setError(null)
     setSuccess(null)
 
-    const handle = lockedHandle
+    const handle = normalizeGithubHandle(lockedHandle)
     if (!isValidGithubHandle(handle)) {
       setLoading(false)
       setError('Your email local-part must look like a GitHub handle (letters, numbers, hyphens).')

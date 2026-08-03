@@ -6,12 +6,12 @@ describe('handleFromEmail', () => {
     expect(handleFromEmail('joes9987@example.com')).toBe('joes9987')
   })
 
-  it('strips invalid characters', () => {
-    expect(handleFromEmail('mitchelldante99.create@mail.com')).toBe('mitchelldante99create')
+  it('strips invalid characters and lowercases', () => {
+    expect(handleFromEmail('MitchellDante99.create@mail.com')).toBe('mitchelldante99create')
   })
 
   it('keeps hyphens', () => {
-    expect(handleFromEmail('celicia-kitty@example.com')).toBe('celicia-kitty')
+    expect(handleFromEmail('Celicia-Kitty@example.com')).toBe('celicia-kitty')
   })
 
   it('truncates to 39 characters', () => {

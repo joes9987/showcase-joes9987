@@ -20,13 +20,22 @@ export default function PartnersPage () {
           <div className="mt-6 space-y-4 text-[var(--card-foreground)] leading-relaxed">
             <p>
               Evaluate candidates the way the cohort works: read their GitHub, click their deploys, and skim Forth status for
-              what the group is shipping this week. When you want a conversation, request an intro—we confirm student opt-in
-              before scheduling.
+              what the group is shipping this week. When you want a conversation, request an intro — we connect you with
+              program / placement staff, who confirm student interest before scheduling.
             </p>
             <p>
-              Placement fee summary: successful hires facilitated through the program are typically billed at approximately{' '}
-              <strong className="text-[var(--foreground)]">25% of first-year cash compensation</strong>. Exact terms are
-              confirmed with the placement lead ({SITE.placementEmail}) before any engagement letter.
+              Placement terms are set by the program, not by this showcase on behalf of every builder. As an indicative
+              reference, successful hires facilitated through the program have often been discussed around approximately{' '}
+              <strong className="text-[var(--foreground)]">25% of first-year cash compensation</strong>
+              — confirm the current fee and process with placement staff ({SITE.placementEmail}) before any engagement letter.
+            </p>
+            <p className={`${ui.alertWarning} text-sm`}>
+              Roster cards are the enrolled Summer Pilot cohort (seeded for partners). Builders can opt out of a public card
+              via Sign in → Claim / Edit profile; opted-out pages show a private placeholder (example:{' '}
+              <Link className={ui.linkAccent} href="/people/rebekah-dev">
+                /people/rebekah-dev
+              </Link>
+              ).
             </p>
             <ol className="list-decimal space-y-2 pl-5 text-sm">
               <li>
@@ -35,15 +44,8 @@ export default function PartnersPage () {
               <li>Open live apps (EudaPM, EudaChat, Forth, peer deploys).</li>
               <li>Submit the intro form with the handles you care about.</li>
               <li>RSVP for the end-of-pilot showcase event below.</li>
-              <li>We reply from the placement inbox with next steps.</li>
+              <li>Placement staff reply with next steps.</li>
             </ol>
-            <p className="text-sm text-[var(--muted)]">
-              Privacy: opted-out builders appear as private placeholders (example:{' '}
-              <Link className={ui.linkAccent} href="/people/rebekah-dev">
-                /people/rebekah-dev
-              </Link>
-              ).
-            </p>
             <p className="text-sm">
               <Link className={ui.linkAccent} href="/for-partners">
                 How we present evidence →

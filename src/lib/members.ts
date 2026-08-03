@@ -33,6 +33,50 @@ export function fallbackRoster (): ShowcaseMember[] {
   }))
 }
 
+function linkRichness (member: ShowcaseMember): number {
+  const links = member.links ?? {}
+  return ['pmDeploy', 'chatDeploy', 'showcaseDeploy', 'pmRepo', 'chatRepo']
+    .filter((key) => Boolean((links as Record<string, unknown>)[key]))
+    .length
+}
+
+/** Collapse case-variant handles; prefer claimed + richer portfolio links. */
+export function dedupeMembersByHandle (members: ShowcaseMember[]): ShowcaseMember[] {
+  const byKey = new Map<string, ShowcaseMember>()
+  for (const raw of members) {
+    const key = raw.github_handle.toLowerCase()
+    const member = {
+      ...raw,
+      github_handle: key,
+      campus: raw.campus ?? null,
+      skills: raw.skills ?? []
+    }
+    const prev = byKey.get(key)
+    if (!prev) {
+      byKey.set(key, member)
+      continue
+    }
+    const preferNew =
+      (Boolean(member.claimed_by) && !prev.claimed_by) ||
+      (Boolean(member.claimed_by) === Boolean(prev.claimed_by) &&
+        linkRichness(member) > linkRichness(prev))
+    const winner = preferNew ? member : prev
+    const loser = preferNew ? prev : member
+    byKey.set(key, {
+      ...winner,
+      links: { ...(loser.links ?? {}), ...(winner.links ?? {}) },
+      headline: winner.headline ?? loser.headline,
+      bio: winner.bio ?? loser.bio,
+      campus: winner.campus ?? loser.campus,
+      skills: (winner.skills?.length ? winner.skills : loser.skills) ?? [],
+      display_name: winner.display_name || loser.display_name
+    })
+  }
+  return [...byKey.values()].sort((a, b) =>
+    a.display_name.localeCompare(b.display_name, undefined, { sensitivity: 'base' })
+  )
+}
+
 /** Prefer richer portfolio cards on public grids when DB rows are thin. */
 export function mergeRosterEnrichment (member: ShowcaseMember): ShowcaseMember {
   const seed = fallbackRoster().find(
@@ -43,6 +87,7 @@ export function mergeRosterEnrichment (member: ShowcaseMember): ShowcaseMember {
   const links = { ...(seed.links ?? {}), ...(member.links ?? {}) }
   return {
     ...member,
+    github_handle: member.github_handle.toLowerCase(),
     headline: member.headline ?? seed.headline,
     bio: member.bio ?? seed.bio,
     campus: member.campus ?? seed.campus,
@@ -53,7 +98,7 @@ export function mergeRosterEnrichment (member: ShowcaseMember): ShowcaseMember {
 
 export async function listPublicMembers (): Promise<ShowcaseMember[]> {
   if (!isSupabaseConfigured()) {
-    return fallbackRoster().filter((m) => !m.opt_out)
+    return dedupeMembersByHandle(fallbackRoster().filter((m) => !m.opt_out))
   }
 
   try {
@@ -65,17 +110,19 @@ export async function listPublicMembers (): Promise<ShowcaseMember[]> {
       .order('display_name')
 
     if (error || !data?.length) {
-      return fallbackRoster().filter((m) => !m.opt_out)
+      return dedupeMembersByHandle(fallbackRoster().filter((m) => !m.opt_out))
     }
-    return (data as ShowcaseMember[]).map((m) =>
-      mergeRosterEnrichment({
-        ...m,
-        campus: m.campus ?? null,
-        skills: m.skills ?? []
-      })
+    return dedupeMembersByHandle(
+      (data as ShowcaseMember[]).map((m) =>
+        mergeRosterEnrichment({
+          ...m,
+          campus: m.campus ?? null,
+          skills: m.skills ?? []
+        })
+      )
     )
   } catch {
-    return fallbackRoster().filter((m) => !m.opt_out)
+    return dedupeMembersByHandle(fallbackRoster().filter((m) => !m.opt_out))
   }
 }
 
