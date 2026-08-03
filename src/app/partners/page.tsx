@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PartnerIntroForm } from '@/components/PartnerIntroForm'
 import { ShowcaseRsvpForm } from '@/components/ShowcaseRsvpForm'
-import { SITE } from '@/lib/site'
 import { ui } from '@/lib/ui'
 
 export const metadata: Metadata = {
@@ -21,13 +20,12 @@ export default function PartnersPage () {
             <p>
               Evaluate candidates the way the cohort works: read their GitHub, click their deploys, and skim Forth status for
               what the group is shipping this week. When you want a conversation, request an intro — we connect you with
-              program / placement staff, who confirm student interest before scheduling.
+              program / placement staff, who confirm student interest and share current placement terms before anything is
+              scheduled.
             </p>
             <p>
-              Placement terms are set by the program, not by this showcase on behalf of every builder. As an indicative
-              reference, successful hires facilitated through the program have often been discussed around approximately{' '}
-              <strong className="text-[var(--foreground)]">25% of first-year cash compensation</strong>
-              — confirm the current fee and process with placement staff ({SITE.placementEmail}) before any engagement letter.
+              This showcase does not publish fee schedules or commit builders to commercial terms. Placement staff reply to
+              intro requests with next steps; fees and process are confirmed with the program, not inferred from this page.
             </p>
             <p className={`${ui.alertWarning} text-sm`}>
               Roster cards are the enrolled Summer Pilot cohort (seeded for partners). Builders can opt out of a public card

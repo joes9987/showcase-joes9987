@@ -36,7 +36,7 @@ const CHECKS = [
   },
   {
     title: 'Hire path + privacy',
-    body: 'Partners page summarizes how to hire (~25% first-year fee), request an introduction, and RSVP for the end-of-pilot showcase. Privacy opt-out is demonstrable.',
+    body: 'Partners page explains how to request an introduction (routed to program / placement staff) and RSVP for the end-of-pilot showcase. Privacy opt-out is demonstrable.',
     href: '/partners',
     linkLabel: 'Partners + intro'
   },

@@ -20,7 +20,7 @@ PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat depl
 - Homepage narrative (≥200 words) focused on public proof of work — not internal infrastructure details
 - People directory with search/filter by skill or project, GitHub avatars, bios, and portfolio links
 - Profile pages with campus/skills when set, GitHub + deploy/repo links, Forth status strip
-- `/partners` — how to hire, ~25% first-year fee summary, request-intro + showcase RSVP
+- `/partners` — how to request an intro (program / placement staff) + showcase RSVP
 - `/for-partners` — ten-minute evidence walkthrough for hiring partners
 - `/suite` — deep links to EudaPM, EudaChat, and Forth
 - Connected suite: one participant account across EudaPM, EudaChat, and EudaMarket (sign in per host)
@@ -29,7 +29,7 @@ PM status from a manual Forth snapshot + portfolio links to EudaPM/EudaChat depl
 
 `/partners` → form posts to `POST /api/partner-intro`, which always persists to `partner_requests` (fail-open). If `RESEND_API_KEY` is set, the placement lead is emailed as well.
 
-Placement fee summary: ~**25% of first-year cash compensation** for successful hires (confirm terms with the placement lead before engagement).
+Intro requests notify placement staff via Resend when configured (`PLACEMENT_LEAD_EMAIL` is server-only — not shown on public pages). Fees and process are confirmed with the program, not published on `/partners`.
 
 ## Local setup
 

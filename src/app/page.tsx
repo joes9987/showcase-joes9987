@@ -70,10 +70,9 @@ export default async function HomePage () {
         <p>
           If you are hiring for internships, associate engineering, or product roles that reward builders who can operate with
           modern tooling, start on the people grid. Filter by skill or project, read merged PRs and READMEs, and click through to
-          running demos. When you want a conversation, use the partners page—we route intro requests to the placement lead and
-          confirm student interest before scheduling. Placement terms are summarized there (typically about 25% of first-year cash
-          compensation for successful hires). Participants who prefer privacy can opt out; their page shows a private placeholder
-          without removing them from the enrolled roster.
+          running demos. When you want a conversation, use the partners page — intro requests go to program / placement staff,
+          who confirm student interest and share current placement terms. Participants who prefer privacy can opt out; their
+          page shows a private placeholder without removing them from the enrolled roster.
         </p>
       </section>
 
