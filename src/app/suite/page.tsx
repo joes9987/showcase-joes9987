@@ -25,8 +25,9 @@ const APPS = [
   },
   {
     name: 'EudaLearn',
-    href: SITE.learnUrl,
-    blurb: 'Week 4 Ludwitt learning app — builder-skills modules with JWT launch and learning events.'
+    href: SITE.learnListingUrl,
+    blurb:
+      'Week 4 Ludwitt learning app — Sign in with Ludwitt, builder-skills modules, and counted practice events. Opens the marketplace listing.'
   }
 ]
 
