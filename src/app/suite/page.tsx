@@ -4,7 +4,7 @@ import { ui } from '@/lib/ui'
 
 export const metadata: Metadata = {
   title: 'Euda suite',
-  description: 'EudaPM, EudaChat, and EudaMarket — the shared suite for the Hult Summer Pilot.'
+  description: 'EudaPM, EudaChat, EudaMarket, and EudaLearn — the shared suite for the Hult Summer Pilot.'
 }
 
 const APPS = [
@@ -22,6 +22,11 @@ const APPS = [
     name: 'EudaMarket',
     href: SITE.marketUrl,
     blurb: 'This site — partner-facing showcase with roster profiles and intro requests.'
+  },
+  {
+    name: 'EudaLearn',
+    href: SITE.learnUrl,
+    blurb: 'Week 4 Ludwitt learning app — builder-skills modules with JWT launch and learning events.'
   }
 ]
 
@@ -31,10 +36,10 @@ export default function SuitePage () {
       <p className={ui.eyebrow}>Cross-app</p>
       <h1 className={ui.pageTitle}>The Euda suite</h1>
       <p className={`${ui.pageSubtitle} mt-2 max-w-2xl`}>
-        Three connected surfaces for the same cohort. Participants keep one account across project management and chat, then claim
-        a public showcase card here. Sign in once per app host—no silent SSO required.
+        Connected surfaces for the same cohort. Participants keep one account across project management and chat, claim a public
+        showcase card here, and launch counted learning sessions in EudaLearn via Ludwitt. Sign in once per app host—no silent SSO.
       </p>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {APPS.map((app) => (
           <a
             key={app.name}

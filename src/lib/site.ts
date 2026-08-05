@@ -6,6 +6,7 @@ export const SITE = {
   chatUrl: process.env.NEXT_PUBLIC_EUDA_CHAT_URL ?? 'https://comms-joes9987.vercel.app',
   forthUrl: process.env.NEXT_PUBLIC_FORTH_URL ?? 'https://forth-bice.vercel.app',
   marketUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://showcase-joes9987.vercel.app',
+  learnUrl: process.env.NEXT_PUBLIC_EUDA_LEARN_URL ?? 'https://learn-joes9987.vercel.app',
   /** Server-only notify target; unset when PLACEMENT_LEAD_EMAIL is missing. */
   placementEmail: process.env.PLACEMENT_LEAD_EMAIL ?? ''
 } as const
