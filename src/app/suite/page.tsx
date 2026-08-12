@@ -27,7 +27,7 @@ const APPS = [
     name: 'EudaLearn',
     href: SITE.learnListingUrl,
     blurb:
-      'Week 4 Ludwitt learning app — Sign in with Ludwitt, builder-skills modules, and counted practice events. Opens the marketplace listing.'
+      'Approved Ludwitt marketplace app — Sign in with Ludwitt, finish a short builder-skills module (~8 min), and count as a qualified practice session.'
   }
 ]
 
@@ -40,6 +40,14 @@ export default function SuitePage () {
         Connected surfaces for the same cohort. Participants keep one account across project management and chat, claim a public
         showcase card here, and launch counted learning sessions in EudaLearn via Ludwitt. Sign in once per app host—no silent SSO.
       </p>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a href={SITE.learnListingUrl} target="_blank" rel="noreferrer" className={ui.btnPrimaryLg}>
+          Practice on EudaLearn
+        </a>
+        <a href={`${SITE.learnUrl}/login`} target="_blank" rel="noreferrer" className={ui.btnSecondary}>
+          Sign in to Learn
+        </a>
+      </div>
       <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {APPS.map((app) => (
           <a
