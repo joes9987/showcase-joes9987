@@ -1,8 +1,8 @@
 {
   "source": "https://forth-bice.vercel.app",
   "sourceLabel": "Forth — winning cohort PM platform",
-  "updatedAt": "2026-08-13T13:15:35.225Z",
-  "summary": "Forth is the Summer Pilot Project 1 winner. Cohort members track tickets and pace in signed-in guild workspaces. EudaMarket shows a manual dated snapshot of that status for partner pages (operators refresh from Forth; not a live API scrape). Live reachability last checked 2026-08-13.",
+  "updatedAt": "2026-08-14T02:05:39.976Z",
+  "summary": "Forth is the Summer Pilot Project 1 winner. Cohort members track tickets and pace in signed-in guild workspaces. EudaMarket shows a manual dated snapshot of that status for partner pages (operators refresh from Forth; not a live API scrape). Live reachability last checked 2026-08-14.",
   "projects": [
     {
       "id": "forth-core",
@@ -35,7 +35,7 @@
   ],
   "howToRefresh": "Live reachability: npm run sync:forth (or GitHub Actions sync-forth cron) probes Forth and writes live.* fields. Program narrative projects[]: edit manually when phases change — Forth has no public ticket API.",
   "live": {
-    "lastCheckedAt": "2026-08-13T13:15:35.225Z",
+    "lastCheckedAt": "2026-08-14T02:05:39.976Z",
     "reachable": true,
     "httpStatus": 200
   }
